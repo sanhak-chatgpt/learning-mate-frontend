@@ -31,5 +31,9 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.8.6"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/sanhak-chatgpt/learning-mate-frontend.git",
+  "author": "Rengod95 <aorwn970@gmail.com>",
+  "license": "MIT"
 }

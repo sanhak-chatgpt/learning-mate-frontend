@@ -2,7 +2,7 @@ import { Layout } from '@/components/App';
 import { AppContent } from '@/components/App/AppContent';
 import { AppHeader } from '@/components/App/AppHeader';
 import { DEFAULT_THEME } from '@/styles/Theme';
-import '@/styles/globals.css';
+import '@/styles/Config.css';
 import { ThemeProvider } from '@emotion/react';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
