@@ -1,3 +1,31 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next", "prettier"],
+  "settings": {
+    "next": {}
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "plugins": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "prefer-const": "error",
+    "linebreak-style": ["error", "unix"],
+    "no-useless-escape": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "curly": ["error", "multi-line"],
+    "react/jsx-no-undef": "error",
+    "no-console": "off"
+  }
 }
