@@ -3,36 +3,35 @@ import { BaseTheme } from './Theme.type';
 export const DEFAULT_THEME: BaseTheme = {
   size: {
     font: {
-      xs: '0.7rem',
-      sm: '0.85rem',
-      md: '1rem',
-      lg: '1.15rem',
-      xl: '1.3rem',
-      xxl: '1.4rem',
-      xxxl: '1.5rem',
+      xs: '13px',
+      sm: '14px',
+      md: '15px',
+      lg: '16px',
+      xl: '20px',
+      xxl: '24px',
     },
   },
   color: {
     type: 'dark',
     text: {
-      primary: '#d0f1ff',
-      secondary: '#ffffff',
-      disabled: 'rgba(255,255,255,0.25)',
-      hint: 'rgba(16,212,159,0.99)',
+      g0: '#161D24',
+      g1: '#000000',
+      g2: '#4E5966',
+      g3: '#76808B',
     },
     background: {
       default: '#202529',
-      paper: '#1F2833',
+    },
+    gradient: {
+      main: 'linear-gradient(97.91deg, #FE82DB 6.1%, #68E4FF 103.66%)',
+      light:
+        'linear-gradient(94.66deg, rgba(254, 130, 219, 0.2) -2.1%, rgba(104, 228, 255, 0.2) 108.41%)',
     },
     primary: {
-      main: '#66FCF1',
-      light: 'rgb(132, 252, 243)',
-      dark: 'rgb(71, 176, 168)',
+      main: 'rgba(104, 228, 255, 1)',
     },
     secondary: {
-      main: '#45A29E',
-      light: 'rgb(106, 180, 177)',
-      dark: 'rgb(48, 113, 110)',
+      main: 'rgba(254, 130, 219, 1)',
     },
     success: {
       main: '#00bf8e',
@@ -51,6 +50,7 @@ export const DEFAULT_THEME: BaseTheme = {
     },
   },
   shadow: {
-    default: 'rgba(100, 200, 250, 0.07) 0px 4px 12px',
+    default: '0px 0px 30px rgba(0, 0, 0, 0.08);',
   },
+  weight: {},
 };
