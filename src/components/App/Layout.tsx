@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Flex } from '../FlexBox';
+import { Flex } from '../UI/FlexBox';
 import { ReactNode } from 'react';
 
 export const Wrapper = styled(Flex)`
