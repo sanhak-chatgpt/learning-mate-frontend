@@ -1,18 +1,27 @@
 import React from "react";
-import {Title} from "./Title";
-import {Description} from "./Description";
-import {Icon} from "./Icon"
-import { styled } from "@tanstack/react-query-devtools/build/lib/utils";
+import { TitleProps } from './Title';
+import { DescriptionProps } from "./Description";
+import { IconProps } from "./Icon"
+//import { styled } from "@tanstack/react-query-devtools/build/lib/utils";
+import styled from '@emotion/styled';
 
 interface ListItemProps {
-  title: string;
-  description: string;
-  icon?: string;
+  title: TitleProps;
+  description: DescriptionProps;
+  icon?: IconProps;
 }
 
-export const ListItem: React.FC<ListItemProps> = ({ title, description, icon }) => {
+const ListItemWarpper = styled.div`
+  box-sizing: border-box;
+  position: relative;
+  width: 331px;
+  height: 82px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #F1F3F8;
+`;
+
+export const ListItem: React.FC<ListItemProps> = ({ title, description, icon } : ListItemProps) => {
   return (
-    React.createElement('div',Title, description, icon)
   );
 };
 

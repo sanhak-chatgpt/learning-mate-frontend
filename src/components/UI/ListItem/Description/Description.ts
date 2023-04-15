@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
-type DescriptionProps = {
+export type DescriptionProps = {
     description: string;
 };
 
-    const Description: FC<DescriptionProps> = ({ description }) => {
+export const Description: FC<DescriptionProps> = ({ description }) => {
 return (
     React.createElement('div',{
         style: {
@@ -23,5 +23,3 @@ return (
     }, description)
 );
 };
-
-export default Description;

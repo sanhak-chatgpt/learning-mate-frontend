@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
-type IconProps = {
+export type IconProps = {
     icon?: string;
 };
 
-const Icon: FC<IconProps> = ({ icon }) => {
+export const Icon: FC<IconProps> = ({ icon }) => {
 return (
     React.createElement('div',{
         style: {
@@ -22,6 +22,4 @@ return (
           }
     }, icon)
     );
-};
-
-export default Icon;
+}

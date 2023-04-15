@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
-type TitleProps = {
+export type TitleProps = {
     title: string;
 };
 
-const Title: FC<TitleProps> = ({ title }) => {
+export const Title: FC<TitleProps> = ({ title }) => {
 return (
     React.createElement('div',{
         style: {
@@ -23,5 +23,3 @@ return (
     }, title)
 );
 };
-
-export default Title;
