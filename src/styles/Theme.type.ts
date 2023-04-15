@@ -1,12 +1,12 @@
+import { Dictionary } from '@/types';
+
+export type SizeItemLiteral = 'font' | 'viewport';
 export type SizeVariant = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
-export type SizeLiteral = Partial<Record<SizeVariant, string>>;
+export type Size = Partial<Record<SizeVariant, string>> & Dictionary;
 
-export type SizeItems = 'font';
+export type ThemeSizes = Record<SizeItemLiteral, Size>;
 
-export type ThemeSizes = Record<SizeItems, SizeLiteral>;
-
-export type ColorVariant = 'primary' | 'secondary' | 'error' | 'success' | 'warning';
-
+export type ColorItemLiteral = 'primary' | 'secondary' | 'error' | 'success' | 'warning';
 export type ColorSet = 'main' | 'light' | 'dark';
 
 export type ColorSetRecord = Partial<Record<ColorSet, string>>;
@@ -22,9 +22,10 @@ export type BaseTheme = {
     text: TextColor;
     background: {
       default: string;
+      darker: string;
     };
     gradient: Partial<Record<ColorSet, string>>;
-  } & Record<ColorVariant, ColorSetRecord>;
-  shadow: object;
+  } & Record<ColorItemLiteral, ColorSetRecord>;
+  shadow: { default: string };
   weight: object;
 };
