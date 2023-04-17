@@ -1,6 +1,6 @@
 import { BaseError } from '@/util';
 import React from 'react';
-import { ErrorBoundaryProps, ErrorBoundaryState } from '.';
+import { ErrorBoundaryProps, ErrorBoundaryState } from './index';
 
 export const INITIAL_ERROR_BOUNDARY_STATE = {
   error: undefined,

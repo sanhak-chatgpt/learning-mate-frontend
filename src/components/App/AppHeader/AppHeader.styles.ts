@@ -1,4 +1,4 @@
-import { Flex } from '@/components/FlexBox';
+import { Flex } from '../../UI/FlexBox';
 import styled from '@emotion/styled';
 
 export const Root = styled.header`
@@ -11,15 +11,13 @@ export const Root = styled.header`
 `;
 
 export const Wrapper = styled(Flex)`
-  background-color: ${({ theme }) => `${theme.color.background.paper}`};
-  box-shadow: ${({ theme }) => `${theme.shadow.default}`};
+  background-color: ${({ theme }) => `${theme.color.background.default}`};
   width: 100%;
   height: 100%;
 `;
 
 export const Container = styled.div`
   margin: 0 auto;
-  max-width: 45rem;
   width: 100%;
   height: 100%;
 `;

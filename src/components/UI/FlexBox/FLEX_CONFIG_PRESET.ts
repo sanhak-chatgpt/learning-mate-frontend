@@ -1,4 +1,4 @@
-import { FlexStyleConfig, FlexVariant } from '.';
+import { FlexStyleConfig, FlexVariant } from './index';
 
 export const DEFAULT_WRAP_CONFIG = 'nowrap';
 export const DEFAULT_GROW_CONFIG = 0;

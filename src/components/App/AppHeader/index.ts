@@ -1,2 +1,2 @@
 export * from './AppHeader';
-export * from './AppHeader.style';
+export * from './AppHeader.styles';
