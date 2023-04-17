@@ -33,9 +33,9 @@ function ListItem(props) {
 }
 
 ListItem.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  icon: PropTypes.string
+  title: PropTypes.ReactNode,
+  description: PropTypes.ReactNode,
+  icon: PropTypes.ReactNode
 };
 
 export default ListItem;
