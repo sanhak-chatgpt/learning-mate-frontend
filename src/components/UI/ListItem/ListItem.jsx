@@ -1,7 +1,6 @@
 import React, { ReactNode }from 'react';
 import PropTypes from 'prop-types';
-import * as S from '.';
-import { DescriptionStyle, DescriptionWithIconStlye, IconStyle, ListItemWrapper, ListItemWrapperOnlyTitle, ListItemWrapperWithIcon, TitleOnlyStyle, TitleStyle, TitleWithIconStyle } from './ListItem.style';
+import * as S from './ListItem.style';
 
 function ListItem(props) {
   const { title, description, icon } = props;
