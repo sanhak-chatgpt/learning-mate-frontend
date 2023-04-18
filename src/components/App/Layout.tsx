@@ -4,8 +4,8 @@ import React, { ReactNode } from 'react';
 import { AppHeader } from '@/components/App/AppHeader';
 import { AppFooter } from '@/components/App/AppFooter';
 import { AppContent } from '@/components/App/AppContent';
-import HeaderContent from '@/components/App/AppHeader/HeaderContent/HeaderContent';
 import { FooterContent } from '@/components/App/AppFooter/FooterContent';
+import { HeaderContent } from '@/components/App/AppHeader/HeaderContent';
 
 export const Wrapper = styled(Flex)`
   width: 100%;
