@@ -10,6 +10,9 @@ export const DEFAULT_THEME: BaseTheme = {
       xl: '20px',
       xxl: '24px',
     },
+    viewport: {
+      mobile: '768px',
+    },
   },
   color: {
     type: 'dark',
@@ -20,7 +23,8 @@ export const DEFAULT_THEME: BaseTheme = {
       g3: '#76808B',
     },
     background: {
-      default: '#202529',
+      default: 'rgba(255, 255, 255, 1)',
+      darker: 'rgba(242, 244, 246, 1)',
     },
     gradient: {
       main: 'linear-gradient(97.91deg, #FE82DB 6.1%, #68E4FF 103.66%)',
