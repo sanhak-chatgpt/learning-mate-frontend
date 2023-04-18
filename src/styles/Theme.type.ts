@@ -1,4 +1,3 @@
-import { Main } from 'next/document';
 export type SizeVariant = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 export type SizeLiteral = Partial<Record<SizeVariant, string>>;
 
@@ -26,6 +25,6 @@ export type BaseTheme = {
     };
     gradient: Partial<Record<ColorSet, string>>;
   } & Record<ColorVariant, ColorSetRecord>;
-  shadow: {};
-  weight: {};
+  shadow: object;
+  weight: object;
 };
