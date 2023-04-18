@@ -2,7 +2,7 @@ import React, { ReactNode }from 'react';
 import PropTypes from 'prop-types';
 import * as S from './ListItem.style';
 
-function ListItem(props) {
+export const ListItem = (props) => {
   const { title, description, icon } = props;
 
   let content;
