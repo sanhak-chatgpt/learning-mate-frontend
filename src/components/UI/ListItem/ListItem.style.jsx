@@ -56,9 +56,9 @@ export const TitleWithIconStyle = styled.div`
     font-family: 'Pretendard';
     font-style: normal;
     font-weight: 700;
-    font-size: 15px;
+    font-size: ${({ theme }) => theme.size.font.md};
     line-height: 18px;
-    color: #000000;
+    color: ${({ theme }) => theme.color.text.g0};
 `;
 
 //title 만 있는 경우
@@ -99,7 +99,7 @@ export const DescriptionWithIconStlye = styled.div`
     font-size: 13px;
     line-height: 16px;
 
-    color: #76808B;
+    color: ${({ theme }) => theme.color.text.g3};
 `;
 
 //그냥 description
@@ -116,6 +116,6 @@ export const DescriptionStyle = styled.div`
     font-size: 13px;
     line-height: 16px;
 
-    color: #76808B;
+    color: ${({ theme }) => theme.color.text.g3};
 `;
 
