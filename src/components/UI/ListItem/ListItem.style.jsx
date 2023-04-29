@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 //그냥 listitem
 export const ListItemWrapper = styled.div`
     position: relative;
-    width: x;
+    width: 100%;
     height: 82px;
     border-bottom: 1px solid #F1F3F8;
     background: ${({ theme }) => theme.color.background.default};
@@ -17,8 +17,7 @@ export const TitleStyle = styled.div`
     top: 24.39%;
     bottom: 52.44%;
 
-    font-family: 'Pretendard';
-    font-style: normal;
+    font-family: 
     font-weight: 600;
     font-size: ${({ theme }) => theme.size.font.md};
     line-height: 18px;
@@ -42,8 +41,6 @@ export const DescriptionStyle = styled.div`
     top: 52.44%;
     bottom: 24.39%;
 
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 400;
     font-size: ${({ theme }) => theme.size.font.xs};
     line-height: 16px;
