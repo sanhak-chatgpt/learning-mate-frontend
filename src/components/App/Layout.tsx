@@ -1,10 +1,15 @@
 import styled from '@emotion/styled';
 import { Flex } from '../UI/FlexBox';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+import { AppHeader } from '@/components/App/AppHeader';
+import { AppFooter } from '@/components/App/AppFooter';
+import { AppContent } from '@/components/App/AppContent';
+import HeaderContent from '@/components/App/AppHeader/HeaderContent/HeaderContent';
+import { FooterContent } from '@/components/App/AppFooter/FooterContent';
 
 export const Wrapper = styled(Flex)`
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 `;
 
 export type LayoutProps = {
@@ -12,5 +17,15 @@ export type LayoutProps = {
 };
 
 export const Layout = ({ children }: LayoutProps) => {
-  return <Wrapper flex='columnStart'>{children}</Wrapper>;
+  return (
+    <Wrapper flex="columnStart">
+      <AppHeader>
+        <HeaderContent></HeaderContent>
+      </AppHeader>
+      <AppContent>{children}</AppContent>
+      <AppFooter>
+        <FooterContent></FooterContent>
+      </AppFooter>
+    </Wrapper>
+  );
 };

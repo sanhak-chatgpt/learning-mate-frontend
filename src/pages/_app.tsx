@@ -1,6 +1,4 @@
 import { Layout } from '@/components/App';
-import { AppContent } from '@/components/App/AppContent';
-import { AppHeader } from '@/components/App/AppHeader';
 import { DEFAULT_THEME } from '@/styles/Theme';
 import '@/styles/Config.css';
 import { ThemeProvider } from '@emotion/react';
@@ -18,10 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider theme={DEFAULT_THEME}>
             <Layout>
-              <AppHeader></AppHeader>
-              <AppContent>
-                <Component {...pageProps} />
-              </AppContent>
+              <Component {...pageProps} />
             </Layout>
           </ThemeProvider>
         </Hydrate>
