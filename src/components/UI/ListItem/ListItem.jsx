@@ -4,18 +4,15 @@ import * as S from './ListItem.style';
 
 export const ListItem = ({ title, description, icon }) => {
 
-  const [renderedContent, setRenderedContent] = useState(null);
-
-  setRenderedContent(
-    <S.ListItemWrapper>
-    {icon && <S.IconStyle>{icon}</S.IconStyle>}
-    <div>
-      <S.TitleStyle icon={icon}>{title}</S.TitleStyle>
-      {description && <S.DescriptionStyle>{description}</S.DescriptionStyle>}
-    </div>
-    </S.ListItemWrapper>)
-
-  return<>{renderedContent}</>;
+  return(
+    <S.ListItemWrapper flex={'rowStart'}>
+      {icon && <S.IconStyle>{icon}</S.IconStyle>}
+      <div flex={'columStart'}>
+        <S.TitleStyle icon={icon}>{title}</S.TitleStyle>
+        {description && <S.DescriptionStyle>{description}</S.DescriptionStyle>}
+      </div>
+    </S.ListItemWrapper>
+  )
 };
 
 ListItem.propTypes = {
