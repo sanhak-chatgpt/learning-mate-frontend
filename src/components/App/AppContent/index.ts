@@ -1,2 +1,2 @@
 export * from './AppContent';
-export * from './AppContent.style';
+export * from './AppContent.styles';

@@ -4,14 +4,14 @@ import { Flex } from '@/components/UI/FlexBox';
 export const Root = styled.div`
   width: 100%;
 
-  min-height: 168px;
+  min-height: 16.8rem;
   background: ${({ theme }) => theme.color.background.default};
 `;
 
 export const Wrapper = styled(Flex)`
   align-items: start;
-  padding: 42px 22px 0 22px;
-  gap: 14px;
+  padding: 4.2rem 2.2rem 0 2.2rem;
+  gap: 1.4rem;
   & h1 {
     width: 100%;
     font-size: ${({ theme }) => theme.size.font.xxl};
