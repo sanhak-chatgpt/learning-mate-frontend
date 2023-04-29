@@ -2,6 +2,7 @@ html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -webkit-tap-highlight-color: transparent; /* 3*/
+  font-size:10px; /* for 1rem to 10px*/
 }
 body,
 p,

@@ -3,12 +3,12 @@ import { BaseTheme } from './Theme.type';
 export const DEFAULT_THEME: BaseTheme = {
   size: {
     font: {
-      xs: '13px',
-      sm: '14px',
-      md: '15px',
-      lg: '16px',
-      xl: '20px',
-      xxl: '24px',
+      xs: '1.3rem',
+      sm: '1.4rem',
+      md: '1.5rem',
+      lg: '1.6rem',
+      xl: '2rem',
+      xxl: '2.4rem',
     },
     viewport: {
       mobile: '768px',
@@ -25,6 +25,10 @@ export const DEFAULT_THEME: BaseTheme = {
     background: {
       default: 'rgba(255, 255, 255, 1)',
       darker: 'rgba(242, 244, 246, 1)',
+    },
+    nav: {
+      active: '#54A6F1',
+      disabled: '#E2E4E9',
     },
     gradient: {
       main: 'linear-gradient(97.91deg, #FE82DB 6.1%, #68E4FF 103.66%)',
