@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useNavigation } from '@/util/hooks/useNavigation';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
+import { useModalContext } from '@/components/UI/Modal/Modal.hooks';
 
 export type NavItemName = IconName;
 export type NavItemPath = `/${string}`;
@@ -30,9 +31,6 @@ export const NavIcon = ({ name, directionPath, ...props }: NavIconProps) => {
   const handleRoute = () => {
     navigateTo(directionPath);
   };
-
-  console.log(directionPath);
-  console.log(getCurrentPath());
 
   const totalColor =
     getCurrentPath() === directionPath ? theme.color.nav.active : theme.color.nav.disabled;
