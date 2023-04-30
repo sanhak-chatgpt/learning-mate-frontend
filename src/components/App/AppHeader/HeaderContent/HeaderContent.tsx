@@ -21,10 +21,12 @@ export const HeaderContent = () => {
 
   return (
     <S.Root>
-      <S.Wrapper flex={'columnStart'}>
-        <RenderTitle></RenderTitle>
-        <RenderDescription></RenderDescription>
-      </S.Wrapper>
+      <S.Container>
+        <S.Wrapper flex={'columnStart'}>
+          <RenderTitle></RenderTitle>
+          <RenderDescription></RenderDescription>
+        </S.Wrapper>
+      </S.Container>
     </S.Root>
   );
 };

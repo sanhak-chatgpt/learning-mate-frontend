@@ -8,12 +8,10 @@ export type HeaderProps = {
 
 export const DEFAULT_HEADER_CONTENT = <div>uninitialized header</div>;
 
-export const AppHeader = ({
-  children = DEFAULT_HEADER_CONTENT,
-}: HeaderProps) => {
+export const AppHeader = ({ children = DEFAULT_HEADER_CONTENT }: HeaderProps) => {
   return (
     <S.Root>
-      <S.Wrapper as='div' flex='rowCenter'>
+      <S.Wrapper flex="rowCenter">
         <S.Container>{children}</S.Container>
       </S.Wrapper>
     </S.Root>

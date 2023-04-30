@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Root = styled.footer`
   width: 100%;
   height: 9rem;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 `;
 

@@ -43,14 +43,15 @@ export class ErrorBoundary extends React.Component<
         resetErrorBoundary: this.resetErrorBoundary,
       };
 
-      if (typeof FallbackRenderer === 'function')
+      if (typeof FallbackRenderer === 'function') {
         return FallbackRenderer(fallbackProps);
-      else if (FallbackComponent)
+      } else if (FallbackComponent) {
         return <FallbackComponent {...fallbackProps}></FallbackComponent>;
-      else
+      } else {
         throw new BaseError(
           'requires either a fallback, fallbackRender, or FallbackComponent prop'
         );
+      }
     }
 
     return children;

@@ -1,6 +1,30 @@
 import Head from 'next/head';
+import { useModalContext } from '@/components/UI/Modal/Modal.hooks';
+import { useNavigation } from '@/util/hooks/useNavigation';
+import React from 'react';
+import ListItem from '@/components/UI/ListItem/ListItem';
+import {
+  MemoizedDivider,
+  MemoizedPlaceHolder,
+  Root,
+  Wrapper,
+} from '@/components/Domain/homePage/Home';
 
 export default function Home() {
+  const { openModal } = useModalContext();
+  const { navigateTo } = useNavigation();
+  const handleOpenModal = () => {
+    openModal({
+      type: 'PreparingService',
+      props: {},
+      events: {
+        onClose: () => {
+          navigateTo('/');
+        },
+      },
+    });
+  };
+
   return (
     <>
       <Head>
@@ -9,6 +33,23 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="" />
       </Head>
+      <Root>
+        <Wrapper flex={'columnStart'}>
+          <MemoizedPlaceHolder></MemoizedPlaceHolder>
+          <ListItem
+            title={'AI에게 가르치고 피드백 받기'}
+            description={'가르친 내용의 90%를 기억할 수 있어요'}
+            icon={{ name: 'MessageIcon', width: '5rem', height: '5rem' }}
+          />
+          <MemoizedDivider></MemoizedDivider>
+          <ListItem
+            title={'다른 고수의 강의 보러가기'}
+            description={'고수가 알기 쉽게 설명한 강의를 들어볼까요?'}
+            icon={{ name: 'ExplorerIcon', width: '5rem', height: '5rem' }}
+            onClick={handleOpenModal}
+          />
+        </Wrapper>
+      </Root>
     </>
   );
 }
