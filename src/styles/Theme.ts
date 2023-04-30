@@ -21,6 +21,7 @@ export const DEFAULT_THEME: BaseTheme = {
       g1: '#000000',
       g2: '#4E5966',
       g3: '#76808B',
+      g4: '#F2F4F7',
     },
     background: {
       default: 'rgba(255, 255, 255, 1)',

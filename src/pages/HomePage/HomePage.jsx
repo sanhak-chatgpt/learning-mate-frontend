@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { AppFooter } from '@/component/App/AppFooter'
 import { ListItem } from '@/component/App/UI/ListItem'
-import { HeaderContent } from '@/component/App/AppHeader/HeaderContent'
 import * as S from './HomePage.style';
 
 function HomePage() {
@@ -14,18 +12,14 @@ function HomePage() {
         return <div class='Box'></div>
     }
 
-//ListItem 안에 props를 넣어야 하나요?
+//이렇게 쓰긴 했는데, ListItem에 내가 원하는걸 넣는 법을 모르겠다 이말이다
     return(
         <S.Root>
-            <S.Wrapper>
-                <HeaderContent></HeaderContent>
+            <S.Wrapper as='div' flex='columnStart'>
                 <Memo></Memo>
-                <S.ContentWrapper>
-                    <ListItem></ListItem>
-                    <Box></Box>
-                    <ListItem></ListItem>
-                </S.ContentWrapper>
-                <AppFooter></AppFooter>
+                <ListItem></ListItem>
+                <Box></Box>
+                <ListItem></ListItem>
             </S.Wrapper>
         </S.Root>     
     );

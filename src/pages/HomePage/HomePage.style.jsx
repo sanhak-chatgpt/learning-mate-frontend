@@ -1,53 +1,26 @@
 import styled from '@emotion/styled'
+import { Flex } from '@/components/UI/FlexBox';
 
 export const Root = styled.div`
-    position: relative;
-    width: 375px;
-    height: 812px;
-    background: #FFFFFF;
+    width: 100%;
+
+    background: ${({ theme }) => theme.color.background.default};
 `;
 
-export const Wrapper = styled.div`
-    
-`;
-
-//ai에게 가르키고 피드백 받기, 다른고수의 강의... frm 14570
-export const ContentWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-
-    position: absolute;
-    width: 375px;
-    height: 180px;
-    left: 0px;
-    top: 281px;
-
+export const Wrapper = styled(Flex)`
     & p {
-        position: absolute;
-        width: 108px;
-        height: 20px;
-        left: 22px;
-        top: 252px;
-        font-family: 'Pretendard';
-        font-style: normal;
+        padding: 4rem 0 0.9rem 2.2rem
         font-weight: 700;
-        font-size: 14px;
+        font-size: ${({ theme }) => theme.size.font.sm};
         line-height: 140%;
-        display: flex;
-        align-items: center;
-        color: #76808B;
+        align-items: start;
+        color: ${({ theme }) => theme.color.text.g3};
     }
 
     .Box {
-        width: 375px;
+        width: 100%;
         height: 8px;
-        background: #F2F4F7;
-
+        background: ${({ theme }) => theme.color.text.g4};
         flex: none;
-        order: 1;
-        flex-grow: 0;
     }
 `;
-
