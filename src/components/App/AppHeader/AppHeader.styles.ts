@@ -2,7 +2,7 @@ import { Flex } from '../../UI/FlexBox';
 import styled from '@emotion/styled';
 
 export const Root = styled.header`
-  width: 100%;
+  width: 100vw;
   position: fixed;
   z-index: 100;
   left: 0;
@@ -16,7 +16,6 @@ export const Wrapper = styled(Flex)`
 `;
 
 export const Container = styled.div`
-  margin: 0 auto;
   width: 100%;
   height: 100%;
 `;

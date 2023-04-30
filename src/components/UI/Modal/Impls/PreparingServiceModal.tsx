@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from '@/components/UI/Modal/Impls/BasicModal.styles';
 import { DefaultModalProps } from '@/components/UI/Modal/Modal.types';
 
-export type PreParingModalProps = {} & DefaultModalProps;
+export type PreParingModalProps = object & DefaultModalProps;
 
 export const PreParingServiceModal = ({ visible, close }: PreParingModalProps) => {
   const vis = visible ? 'true' : 'false';
