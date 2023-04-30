@@ -1,22 +1,21 @@
-import { IconName, SVGIcon, SVGIconProps } from '@/components/UI/SVGIcon';
+import { SVGIcon, SVGIconProps } from '@/components/UI/SVGIcon';
 
 export * from './FooterContent';
 export * from './FooterContent.styles';
-import React, { Fragment } from 'react';
+import React from 'react';
 import * as S from './FooterContent.styles';
 import Link from 'next/link';
 import { useNavigation } from '@/util/hooks/useNavigation';
-import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
-import { useModalContext } from '@/components/UI/Modal/Modal.hooks';
+import { IconRegistryKey } from '@/components/UI/SVGIcon/SVGIcon.registry';
 
-export type NavItemName = IconName;
+export type NavItemName = IconRegistryKey;
 export type NavItemPath = `/${string}`;
 
 export type NavItem<TName = NavItemName, TPath = NavItemPath> = { name: TName; path: TPath };
 export const NAV_URL_ASSETS: Array<NavItem> = [
-  { name: 'nav_home', path: '/' },
-  { name: 'nav_setting', path: '/setting' },
+  { name: 'NavHomeIcon', path: '/' },
+  { name: 'NavSettingIcon', path: '/setting' },
 ];
 
 export type NavIconProps = {
@@ -35,7 +34,7 @@ export const NavIcon = ({ name, directionPath, ...props }: NavIconProps) => {
   const totalColor =
     getCurrentPath() === directionPath ? theme.color.nav.active : theme.color.nav.disabled;
 
-  return <SVGIcon {...props} color={totalColor} onClick={handleRoute} />;
+  return <SVGIcon name={name} {...props} onClick={handleRoute} fill={totalColor} />;
 };
 
 export const FooterContent = () => {
@@ -45,12 +44,7 @@ export const FooterContent = () => {
         return (
           <S.IconContainer as={'li'} flex={'rowCenter'} key={item.name}>
             <Link href={item.path}>
-              <NavIcon
-                iconName={item.name}
-                size={{ width: 22, height: 24 }}
-                name={item.name}
-                directionPath={item.path}
-              />
+              <NavIcon name={item.name} width={24} height={24} directionPath={item.path} />
             </Link>
           </S.IconContainer>
         );

@@ -5,9 +5,10 @@ import { DefaultModalProps } from '@/components/UI/Modal/Modal.types';
 export type PreParingModalProps = {} & DefaultModalProps;
 
 export const PreParingServiceModal = ({ visible, close }: PreParingModalProps) => {
+  const vis = visible ? 'true' : 'false';
   return (
     <S.Root>
-      <S.Container flex={'rowCenter'} visible={visible}>
+      <S.Container flex={'rowCenter'} visible={vis}>
         <S.Wrapper flex={'columnStart'}>
           <header>
             앗, 열심히 준비하고 있어요.

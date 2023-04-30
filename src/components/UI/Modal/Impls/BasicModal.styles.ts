@@ -6,12 +6,12 @@ export const Root = styled.div`
   height: 20.9rem;
 `;
 
-export const Container = styled(Flex)<{ visible: boolean }>`
+export const Container = styled(Flex)<{ visible: 'true' | 'false' }>`
   background: ${({ theme }) => theme.color.background.default};
   border-radius: 20px;
   padding: 1.8rem;
 
-  transform: ${({ visible }) => (visible ? 'translateY(0)' : 'translateY(70rem)')};
+  transform: ${({ visible }) => (visible === 'true' ? 'translateY(0)' : 'translateY(70rem)')};
   transition: transform 400ms;
 `;
 
