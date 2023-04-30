@@ -3,11 +3,10 @@ import { Flex } from '@/components/UI/FlexBox';
 
 export const Root = styled.div`
     width: 100%;
-
-    background: ${({ theme }) => theme.color.background.default};
 `;
 
 export const Wrapper = styled(Flex)`
+    background: ${({ theme }) => theme.color.background.default};
     & p {
         padding-top: 4rem;
         padding-left: 2.2rem;
@@ -24,7 +23,6 @@ export const Wrapper = styled(Flex)`
         width: 100%;
         height: 8px;
         background: ${({ theme }) => theme.color.text.g4};
-        flex: none;
     }
     & div{
         width: 100%;
