@@ -1,36 +1,19 @@
-import React, { ReactNode }from 'react';
+import React, { ReactNode, useState } from 'react';
 import PropTypes from 'prop-types';
 import * as S from './ListItem.style';
 
-function ListItem(props) {
-  const { title, description, icon } = props;
+export const ListItem = ({ title, description, icon }) => {
 
-  let content;
-  if (icon) {
-    content = (
-        <S.ListItemWrapperWithIcon>
-            <S.IconStyle>{icon}</S.IconStyle>
-            <S.TitleWithIconStyle>{title}</S.TitleWithIconStyle>
-            <S.DescriptionWithIconStlye>{description}</S.DescriptionWithIconStlye>
-        </S.ListItemWrapperWithIcon>
-    );
-  } else if (description) {
-    content = (
-      <S.ListItemWrapper>
-        <S.TitleStyle>{title}</S.TitleStyle>
-        <S.DescriptionStyle>{description}</S.DescriptionStyle>
-      </S.ListItemWrapper>
-    );
-  } else {
-    content = (
-      <S.ListItemWrapperOnlyTitle>
-        <S.TitleOnlyStyle>{title}</S.TitleOnlyStyle>
-      </S.ListItemWrapperOnlyTitle>
-    );
-  }
-
-  return <>{content}</>;
-}
+  return(
+    <S.ListItemWrapper flex={'rowStart'}>
+      {icon && <S.IconStyle>{icon}</S.IconStyle>}
+      <div flex={'columStart'}>
+        <S.TitleStyle icon={icon}>{title}</S.TitleStyle>
+        {description && <S.DescriptionStyle>{description}</S.DescriptionStyle>}
+      </div>
+    </S.ListItemWrapper>
+  )
+};
 
 ListItem.propTypes = {
   title: PropTypes.ReactNode,
