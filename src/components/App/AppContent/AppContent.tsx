@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import * as S from '.';
+import * as S from './AppContent.styles';
 
 export type ContentProps = {
   children?: ReactNode;
