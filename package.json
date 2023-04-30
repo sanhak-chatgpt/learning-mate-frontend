@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:svg": "npx svgr public/icons -d src/components/UI/SVGIcon/templates --typescript",
     "start": "next start",
     "lint": "next lint"
   },
@@ -16,17 +17,24 @@
     "@types/node": "18.15.5",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
     "date-fns": "^2.29.3",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
-    "next": "13.2.4",
+    "next": "^13.3.1",
     "qs": "^6.11.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.0.2"
+    "recoil": "^0.7.7",
+    "typescript": "5.0.2",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
+    "@emotion/eslint-plugin": "^11.10.0",
+    "@svgr/cli": "^7.0.0",
+    "@svgr/webpack": "^7.0.0",
     "@types/qs": "^6.9.7",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",

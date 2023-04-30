@@ -5,7 +5,7 @@ import {
   StyleConfigKeys,
   FlexStyle,
   CustomFlexStyleConfig,
-} from '.';
+} from './index';
 import { css } from '@emotion/react';
 
 export const getVariantStyle = (variant: FlexVariant): FlexStyleConfig => {

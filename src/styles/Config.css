@@ -1,7 +1,14 @@
+@font-face{
+  font-family: 'Pretendard-Regular';
+  src: url('~/public/fonts/Pretendard-Regular.woff');
+}
+
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -webkit-tap-highlight-color: transparent; /* 3*/
+  font-family: 'Pretendard-Regular', sans-serif;
+  font-size:10px; /* for 1rem to 10px*/
 }
 body,
 p,
@@ -63,10 +70,7 @@ ol {
 }
 
 body {
-  width: 100vw;
   height: 100vh;
-  background-color:#202529;
-
 }
 
 #__next{
