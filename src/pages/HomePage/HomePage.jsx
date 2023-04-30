@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useModalContext } from '@/components/UI/Modal/Modal.hooks';
 import { ListItem } from 'src/components/UI/ListItem/ListItem'
+import { useNavigation } from '@/util/hooks/useNavigation';
 import * as S from './HomePage.style';
 
 export const HomePage = () => {
+    const { openModal } = useModalContext();
+    const { getCurrentPath, navigateTo } = useNavigation();
+    const handleOpenModal = () => {
+        openModal({
+            type: 'PreparingService',
+            props: {},
+            events: {
+                onclose: () => {
+                    navigateTo('/');
+                },
+            },
+        });
+    };
+
     const Memo = () => {
         return <p>바로 시작해볼까요?</p>
     };
@@ -12,6 +28,7 @@ export const HomePage = () => {
     };
 
     function handleClick() {
+        handleOpenModal();
         return console.log('123123');
     };
 
