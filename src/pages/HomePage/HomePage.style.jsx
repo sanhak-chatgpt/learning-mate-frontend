@@ -9,11 +9,14 @@ export const Root = styled.div`
 
 export const Wrapper = styled(Flex)`
     & p {
-        padding: 4rem 0 0.9rem 2.2rem
+        padding-top: 4rem;
+        padding-left: 2.2rem;
+        padding-bottom: 0.9rem;
+        align: left;
+        width: 100%;
         font-weight: 700;
         font-size: ${({ theme }) => theme.size.font.sm};
         line-height: 140%;
-        align-items: start;
         color: ${({ theme }) => theme.color.text.g3};
     }
 
@@ -22,5 +25,8 @@ export const Wrapper = styled(Flex)`
         height: 8px;
         background: ${({ theme }) => theme.color.text.g4};
         flex: none;
+    }
+    & div{
+        width: 100%;
     }
 `;

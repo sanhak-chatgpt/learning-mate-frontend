@@ -8,7 +8,7 @@ export const ListItem = ({ title, description, icon }) => {
     <S.ListItemWrapper flex={'rowStart'}>
       {icon && <S.IconStyle>{icon}</S.IconStyle>}
       <div flex={'columStart'}>
-        <S.TitleStyle icon={icon}>{title}</S.TitleStyle>
+        <S.TitleStyle>{title}</S.TitleStyle>
         {description && <S.DescriptionStyle>{description}</S.DescriptionStyle>}
       </div>
     </S.ListItemWrapper>
