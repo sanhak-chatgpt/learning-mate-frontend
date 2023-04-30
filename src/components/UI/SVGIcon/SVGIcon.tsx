@@ -1,53 +1,24 @@
-import React from 'react';
-import {
-  IconName,
-  ViewBoxSize,
-  ViewPortSize,
-  getIconData,
-  setViewBoxSize,
-  setViewPortSize,
-} from '.';
+import React, { Suspense, SVGProps } from 'react';
+import { IconRegistryKey, SVGIconRegistry } from '@/components/UI/SVGIcon/SVGIcon.registry';
 
 export type SVGIconProps = {
-  iconName: IconName;
-  size?: ViewPortSize;
-  viewboxsize?: ViewBoxSize;
-  color?: string;
-  onClick?: (args: unknown) => void;
+  name: IconRegistryKey;
+  width: string | number;
+  height: string | number;
+  fill?: string;
+  onClick?: (...args: any) => void;
 };
 
-export const SVGIcon = React.memo(function SVGIcon({
-  size,
-  viewboxsize,
-  iconName,
-  color,
-  onClick,
-}: SVGIconProps) {
-  const {
-    minX,
-    minY,
-    width: viewBoxWidth,
-    height: viewBoxHeight,
-  } = React.useMemo(() => setViewBoxSize(viewboxsize, iconName), [viewboxsize, iconName]);
-  //viewBoxSize
-  const { width: iconWidth, height: iconHeight } = React.useMemo(
-    () => setViewPortSize(size),
-    [size]
-  );
-  // path to be drawn
-  const icon_data = React.useMemo(() => getIconData(iconName), [iconName]);
+const RenderLoader = () => <p>Loading</p>;
 
+export const SVGIcon = ({ name, width, height, fill, ...props }: SVGIconProps) => {
+  const Component = React.useMemo(() => React.lazy(SVGIconRegistry[name]), []);
+  console.log(name, fill);
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={iconWidth}
-      height={iconHeight}
-      fill="none"
-      viewBox={`${minX} ${minY} ${viewBoxWidth} ${viewBoxHeight}`}
-      onClick={onClick}>
-      <path fill={color} d={icon_data.path} {...icon_data}></path>
-    </svg>
+    <Suspense fallback={<RenderLoader />}>
+      <Component width={width} height={height} title={name} {...props} fill={fill} />
+    </Suspense>
   );
-});
+};
 
 export default SVGIcon;

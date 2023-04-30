@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:svg": "npx svgr public/icons -d src/components/UI/SVGIcon/templates --typescript",
     "start": "next start",
     "lint": "next lint"
   },
@@ -31,6 +32,8 @@
   },
   "devDependencies": {
     "@emotion/eslint-plugin": "^11.10.0",
+    "@svgr/cli": "^7.0.0",
+    "@svgr/webpack": "^7.0.0",
     "@types/qs": "^6.9.7",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",

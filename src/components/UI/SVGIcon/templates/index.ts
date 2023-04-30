@@ -1,0 +1,9 @@
+export { default as ExplorerIcon } from './ExplorerIcon';
+export { default as GradientCircleIcon } from './GradientCircleIcon';
+export { default as GradientPenIcon } from './GradientPenIcon';
+export { default as MessageIcon } from './MessageIcon';
+export { default as MicrophoneIcon } from './MicrophoneIcon';
+export { default as NavHomeIcon } from './NavHomeIcon';
+export { default as NavSettingIcon } from './NavSettingIcon';
+export { default as PauseIcon } from './PauseIcon';
+export { default as RecordIcon } from './RecordIcon';
