@@ -4,7 +4,8 @@ export const Root = styled.main`
   height: auto;
   width: 100%;
   position: absolute;
-  top: 64px;
+  top: 16.8rem;
+  margin-top: 1rem;
   bottom: 0;
 `;
 

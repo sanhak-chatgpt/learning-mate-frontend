@@ -8,19 +8,25 @@ import type { AppProps } from 'next/app';
 import React from 'react';
 import { RecoilRoot } from 'recoil';
 import localFont from 'next/font/local'
-
+import { ModalProvider } from '@/components/UI/Modal/Modal.Context';
+import { ModalRegistry } from '@/components/UI/Modal/ModalRegistry';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
+
   return (
     <>
       <RecoilRoot>
         <QueryClientProvider client={queryClient}>
           <Hydrate state={pageProps.dehydratedState}>
             <ThemeProvider theme={DEFAULT_THEME}>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
+              <ModalProvider
+                registry={ModalRegistry}
+                defaultOverlayOptions={{ default: { closeDelay: 500 } }}>
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
+              </ModalProvider>
             </ThemeProvider>
           </Hydrate>
           <ReactQueryDevtools />

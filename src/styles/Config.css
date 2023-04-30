@@ -8,6 +8,7 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
   -webkit-tap-highlight-color: transparent; /* 3*/
   font-family: 'Pretendard-Regular', sans-serif;
+  font-size:10px; /* for 1rem to 10px*/
 }
 body,
 p,

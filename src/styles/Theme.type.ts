@@ -25,6 +25,10 @@ export type BaseTheme = {
       darker: string;
     };
     gradient: Partial<Record<ColorSet, string>>;
+    nav: {
+      active: string;
+      disabled: string;
+    };
   } & Record<ColorItemLiteral, ColorSetRecord>;
   shadow: { default: string };
   weight: object;
