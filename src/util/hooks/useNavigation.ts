@@ -32,6 +32,31 @@ export const useNavigation = () => {
     return router.pathname;
   };
 
+  const replaceTo = useCallback(
+    async <TArgs = unknown, TValue = unknown>(
+      path: string,
+      successCallback?: SuccessCallback<TArgs, TValue>,
+      args?: TArgs
+    ) => {
+      try {
+        const isSuccess = await router.replace(path);
+        if (!!successCallback && !!args) {
+          if (isSuccess) successCallback(args);
+        }
+      } catch (e: unknown) {
+        if (e instanceof Error) {
+          const error = new BaseError(e.message);
+          console.log(error.message);
+        }
+      }
+    },
+    []
+  );
+
+  const popHistory = async () =>{
+    await router.back();
+  };
+
   return {
     router,
     navigateTo,
