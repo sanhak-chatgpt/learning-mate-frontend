@@ -9,6 +9,7 @@ export type ListItemDescription = string;
 export type ListItemProps = {
   title: ListItemTitle;
   description?: ListItemDescription;
+  itemSize?: { width?: string; height?: string };
   icon?: {
     name: IconRegistryKey;
     width: string | number;
@@ -18,8 +19,8 @@ export type ListItemProps = {
   onClick?: (...args: any) => void;
 };
 
-export const ListItem = ({ title, description, icon, onClick }: ListItemProps) => {
-  const Icon = !!icon
+export const ListItem = ({ title, description, icon, onClick, itemSize }: ListItemProps) => {
+  const IconRender = !!icon
     ? () => (
         <SVGIcon
           name={icon.name}
@@ -31,11 +32,11 @@ export const ListItem = ({ title, description, icon, onClick }: ListItemProps) =
     : null;
 
   return (
-    <S.ListItemRoot onClick={onClick}>
+    <S.ListItemRoot onClick={onClick} itemSize={itemSize}>
       <S.ListItemWrapper flex={'rowStart'}>
-        {Icon && (
+        {IconRender && (
           <S.IconContainer flex={'rowCenter'}>
-            <Icon />
+            <IconRender />
           </S.IconContainer>
         )}
         <S.TextContainer flex={'columnCenter'}>

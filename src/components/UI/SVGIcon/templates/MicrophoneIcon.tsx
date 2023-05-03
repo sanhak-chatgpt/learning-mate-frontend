@@ -10,11 +10,11 @@ const Base = ({
   fill = 'none',
   ...props
 }: SVGProps<SVGSVGElement> & {
-  width: number | string,
-  height: number | string,
-  title: string,
-  viewBox?: ViewBoxSize,
-  fill?: string,
+  width: number | string;
+  height: number | string;
+  title: string;
+  viewBox?: ViewBoxSize;
+  fill?: string;
 }) => {
   return (
     <svg
@@ -24,7 +24,7 @@ const Base = ({
       fill={fill}
       viewBox={viewBox}
       {...props}>
-      <g fillOpacity={0.2} filter="url(#microphone_icon_svg__a)">
+      <g fillOpacity={0.4} filter="url(#microphone_icon_svg__a)">
         <path
           fill="url(#microphone_icon_svg__b)"
           d="M29 38.5c0-20.987 17.013-38 38-38s38 17.013 38 38v65c0 20.987-17.013 38-38 38s-38-17.013-38-38v-65Z"
@@ -77,7 +77,7 @@ const Base = ({
           <feOffset dy={0.5} />
           <feGaussianBlur stdDeviation={1} />
           <feComposite in2="hardAlpha" k2={-1} k3={1} operator="arithmetic" />
-          <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
           <feBlend in2="shape" result="effect2_innerShadow_31_463" />
         </filter>
       </defs>

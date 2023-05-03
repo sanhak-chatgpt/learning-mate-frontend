@@ -8,6 +8,7 @@ export const SVGIconRegistry = {
   NavSettingIcon: () => import('./templates/NavSettingIcon'),
   PauseIcon: () => import('./templates/PauseIcon'),
   RecordIcon: () => import('./templates/RecordIcon'),
+  HeaderBackArrow: () => import('./templates/HeaderBackArrow'),
 };
 
 export type IconRegistryKey = keyof typeof SVGIconRegistry;

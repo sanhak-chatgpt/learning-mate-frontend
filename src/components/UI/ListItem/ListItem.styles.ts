@@ -1,13 +1,20 @@
 import styled from '@emotion/styled';
 import { Flex } from '@/components/UI/FlexBox';
 
-export const ListItemRoot = styled.li`
+export const ListItemRoot = styled.li<{ itemSize?: { width?: string; height?: string } }>`
   width: 100%;
-  min-height: 8.6rem;
   height: 8.6rem;
   padding: 0 2.2rem 0 2.2rem;
   box-sizing: border-box;
   list-style: none;
+  ${({ itemSize }) => {
+    const totalWidth = itemSize?.width ? itemSize?.width : '100%';
+    const totalHeight = itemSize?.height ? itemSize?.height : '8.6rem';
+    return `
+      width: ${totalWidth};
+      height: ${totalHeight};
+    `;
+  }}
 `;
 
 export const ListItemWrapper = styled(Flex)`

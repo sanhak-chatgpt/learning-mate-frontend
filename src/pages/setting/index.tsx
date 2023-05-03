@@ -16,17 +16,13 @@ const SettingPage = () => {
       },
     });
   };
-  console.log('렌더링 세팅 페이지');
 
   useEffect(() => {
-    console.log('이펙트 실행');
     if (getCurrentPath() === '/setting') handleOpenModal();
-    return () => {
-      console.log('페이지 언마운트 세팅');
-    };
+    return () => {};
   }, []);
 
-  return <div></div>;
+  return <div>마이페이지</div>;
 };
 
 export default SettingPage;
