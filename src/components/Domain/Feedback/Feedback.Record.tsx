@@ -14,6 +14,7 @@ import {
 import { SVGIcon } from '@/components/UI/SVGIcon';
 import { useFeedbackRecordContoller } from '@/components/Domain/Feedback/FeedbackRecord.hooks';
 import FeedbackWait from '@/components/Domain/Feedback/Feedback.Wait';
+import FeedbackResult from '@/components/Domain/Feedback/Feedback.Result';
 
 const FeedBackRecord = ({ config }: ConfigurationListProps) => {
   const {
@@ -34,9 +35,9 @@ const FeedBackRecord = ({ config }: ConfigurationListProps) => {
     ) : lectureQueryStatus === 'error' ? (
       <div>getting feedback has an error</div>
     ) : (
-      <div>{lectureQueryData?.transcribed}</div>
+      <FeedbackResult result={lectureQueryData} />
     );
-  };
+  }; 
 
   // console.log('레코드 컴포넌트', mediaRecorder?.state);
 
