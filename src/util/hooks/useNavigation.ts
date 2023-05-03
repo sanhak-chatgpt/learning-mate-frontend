@@ -9,12 +9,16 @@ export const useNavigation = () => {
 
   const navigateTo = useCallback(
     async <TArgs = unknown, TValue = unknown>(
-      path: string,
+      path?: string,
+      query?: Record<string, string>,
       successCallback?: SuccessCallback<TArgs, TValue>,
       args?: TArgs
     ) => {
       try {
-        const isSuccess = await router.push(path);
+        const isSuccess = await router.push({
+          pathname: path ?? getCurrentPath(),
+          query: query,
+        });
         if (!!successCallback && !!args) {
           if (isSuccess) successCallback(args);
         }
@@ -28,6 +32,10 @@ export const useNavigation = () => {
     []
   );
 
+  const replaceQueryString = (query: Record<string, string>) => {
+    navigateTo(getCurrentPath(), query);
+  };
+
   const getCurrentPath = () => {
     return router.pathname;
   };
@@ -36,5 +44,6 @@ export const useNavigation = () => {
     router,
     navigateTo,
     getCurrentPath,
+    replaceQueryString,
   };
 };
