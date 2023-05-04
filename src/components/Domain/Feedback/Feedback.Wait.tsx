@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import * as S from './FeedbackForm.styles';
+import * as S from './Feedback.styles';
 import { SVGIcon } from '@/components/UI/SVGIcon';
 
 const DEFAULT_GEN_TEXT = '피드백 생성 중...';

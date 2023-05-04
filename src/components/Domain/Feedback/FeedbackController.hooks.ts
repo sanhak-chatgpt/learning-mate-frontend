@@ -66,7 +66,11 @@ export const useFeedbackController = () => {
   const topicQuery = useInfiniteTopicList(processState, feedbackConfig.subject?.id as number);
 
   //unmount State reset
-
+  useEffect(() => {
+    return () => {
+      setFeedbackConfig({});
+    };
+  }, []);
   return {
     processState,
     feedbackConfig,

@@ -11,10 +11,9 @@ export type RecordProcessState = 'idle' | 'record' | 'progress' | 'success';
 export const useFeedbackRecordContoller = (feedbackConfig: FeedbackConfiguration) => {
   const [recordProcess, setRecordProcess] = useState<RecordProcessState>('idle');
 
-  const { setUploadedUrl, lectureQueryData, lectureQueryStatus, handleGetFeedback } =
-    useGetFeedback(feedbackConfig);
+  const { setUploadedUrl, lectureQueryData, lectureQueryStatus, handleResultCheckDone } =
+    useGetFeedbackResult(feedbackConfig);
   const {
-    uploadAudio,
     mediaRecorder,
     stopRecording,
     startRecording,
@@ -24,7 +23,7 @@ export const useFeedbackRecordContoller = (feedbackConfig: FeedbackConfiguration
     resetRecording,
   } = useRecord(setUploadedUrl);
 
-  const { replaceQueryString, router } = useNavigation();
+  const { replaceQueryString, router, navigateTo } = useNavigation();
 
   useHeader();
 
@@ -52,8 +51,18 @@ export const useFeedbackRecordContoller = (feedbackConfig: FeedbackConfiguration
     } else if (recordQueryString === 'progress') {
       setRecordProcess('success');
       replaceQueryString({ process: 'lecture', record: 'success' });
+    } else if (recordQueryString === 'success') {
+      console.log('핸들 레코드 프로세스');
     }
   }, [recordQueryString, replaceQueryString]);
+
+  const handleFeedbackResultCheck = () => {
+    console.log('결과 체크 핸들러 실행');
+    handleResultCheckDone(() => {
+      resetProcess();
+      navigateTo('/');
+    });
+  };
 
   const resetProcess = () => {
     setRecordProcess('idle');
@@ -68,6 +77,7 @@ export const useFeedbackRecordContoller = (feedbackConfig: FeedbackConfiguration
 
   useEffect(() => {
     if (lectureQueryStatus === 'success' && lectureQueryData?.status === 'SUCCESS') {
+      console.log(recordProcess);
       handleProcessForward();
     }
   }, [handleProcessForward, lectureQueryData?.status, lectureQueryStatus]);
@@ -85,6 +95,7 @@ export const useFeedbackRecordContoller = (feedbackConfig: FeedbackConfiguration
     mediaRecorder,
     handleStartRecording,
     handleStopRecording,
+    handleFeedbackResultCheck,
     resumeRecording,
     pauseRecording,
     formattedTime,
@@ -93,10 +104,25 @@ export const useFeedbackRecordContoller = (feedbackConfig: FeedbackConfiguration
   };
 };
 
-const useGetFeedback = (feedbackConfig: FeedbackConfiguration) => {
+const useGetFeedbackResult = (feedbackConfig: FeedbackConfiguration) => {
   const [uploadedUrl, setUploadedUrl] = useState<string>();
   const [lectureId, setLectureId] = useState<number>();
   const { data, status } = useGetFeedbackQuery(lectureId);
+  const { openModal } = useModalContext();
+  const handleResultCheckDone = (handleProcessForward: () => void) => {
+    openModal({
+      type: 'FeedbackResultHelpfulness',
+      props: {
+        title: '얼마나 도움이 되었나요?',
+      },
+      events: {
+        onClose: () => {
+          handleProcessForward();
+        },
+      },
+    });
+  };
+
   const handleGetFeedback = async () => {
     console.log(feedbackConfig.topic?.id);
     console.log(uploadedUrl);
@@ -121,10 +147,10 @@ const useGetFeedback = (feedbackConfig: FeedbackConfiguration) => {
   }, [uploadedUrl]);
 
   return {
-    handleGetFeedback,
     lectureQueryData: data,
     lectureQueryStatus: status,
     setUploadedUrl,
+    handleResultCheckDone,
   };
 };
 
@@ -195,7 +221,7 @@ const useRecord = (setUploadedUrl: Dispatch<SetStateAction<string | undefined>>)
       recorder?.start();
       setMediaRecorder(recorder);
     },
-    [mediaRecorder]
+    [setUploadedUrl, startTimer]
   );
 
   const startRecording = async (failCallback?: (...args: any) => void) => {
@@ -206,6 +232,7 @@ const useRecord = (setUploadedUrl: Dispatch<SetStateAction<string | undefined>>)
     resetTimer();
     if (mediaRecorder && mediaRecorder.state !== 'inactive') {
       mediaRecorder?.stop();
+      setMediaRecorder(undefined);
     }
   }, [mediaRecorder, resetTimer]);
 

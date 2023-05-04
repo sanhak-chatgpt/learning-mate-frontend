@@ -7,10 +7,9 @@ export type BasicModalProps = {
 } & DefaultModalProps;
 
 export const BasicModal = ({ visible, close, title = '테스트' }: BasicModalProps) => {
-  const vis = visible ? 'true' : 'false';
   return (
     <S.Root>
-      <S.Container flex={'rowCenter'} visible={vis}>
+      <S.Container flex={'rowCenter'} visible={visible}>
         <S.Wrapper flex={'columnStart'}>
           <header>{title}</header>
           <footer>

@@ -11,7 +11,7 @@ import {
   PageSubjectDtoResponse,
   PageTopicDtoResponse,
 } from '@/util';
-import * as S from './FeedbackForm.styles';
+import * as S from './Feedback.styles';
 import ListItem from '@/components/UI/ListItem/ListItem';
 
 export type FeedbackConfigurationListProps = {

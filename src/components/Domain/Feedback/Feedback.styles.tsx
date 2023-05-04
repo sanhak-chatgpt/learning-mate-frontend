@@ -96,6 +96,7 @@ export const RecordFooter = styled.footer`
 export const RecordButtonWrapper = styled(Flex)`
   padding: 0 2.2rem 0 2.2rem;
   min-height: 8rem;
+  gap: 1.2rem;
   box-sizing: border-box;
   width: 100%;
   //position: fixed;
@@ -126,7 +127,7 @@ export const ResultContentContainer = styled(Flex)`
     font-size: ${({ theme }) => theme.size.font.sm};
     font-weight: 600;
     line-height: 19.6px;
-    color: ${({ theme }) => theme.color.text.g2}
+    color: ${({ theme }) => theme.color.text.g2};
   }
 
   // 얘가 title
