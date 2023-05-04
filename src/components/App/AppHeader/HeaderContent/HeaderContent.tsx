@@ -4,6 +4,7 @@ import { useHeader } from '@/components/App/AppHeader/HeaderContent/HeaderConten
 import { BackwardContainer } from './HeaderContent.styles';
 import { SVGIcon } from '@/components/UI/SVGIcon';
 import { useNavigation } from '@/util/hooks/useNavigation';
+import { HeaderBackArrow } from '@/components/UI/SVGIcon/templates';
 
 export const HeaderContent = () => {
   const { headerContent } = useHeader();

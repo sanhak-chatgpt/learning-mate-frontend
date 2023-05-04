@@ -68,6 +68,12 @@ export const WaitContainer = styled(Flex)`
   }
 `;
 
+export const ResultContainer = styled(Flex)`
+  width: 100%;
+  max-height: 100%
+  position: absolute;
+`;
+
 export const ConfigListWrapper = styled(Flex)`
   width: 100%;
   //overflow-y: hidden;
@@ -109,4 +115,25 @@ export const RecordCompleteButton = styled(Flex)`
   font-size: 16px;
   line-height: 140%;
   color: ${({ theme }) => theme.color.background.default};
+`;
+
+export const ResultContentContainer = styled(Flex)`
+  width: 100%;
+  position: relative;
+
+  // 얘가 feedback 내용들 description
+  & h3 {
+    font-size: ${({ theme }) => theme.size.font.sm};
+    font-weight: 600;
+    line-height: 19.6px;
+    color: ${({ theme }) => theme.color.text.g2}
+  }
+
+  // 얘가 title
+  & h4 {
+    font-weight: 400;
+    font-size: ${({ theme }) => theme.size.font.sm};
+    line-height: 18.2px;
+    color: ${({ theme }) => theme.color.text.g3};
+  }
 `;
