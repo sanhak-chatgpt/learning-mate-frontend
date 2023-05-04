@@ -15,6 +15,7 @@ export const PreParingServiceModal = ({ visible, close }: PreParingModalProps) =
             <br />
             잠시만 기다려주세요!
           </header>
+          <main></main>
           <footer>
             <S.ModalButton as={'button'} flex={'rowCenter'} onClick={close}>
               확인
