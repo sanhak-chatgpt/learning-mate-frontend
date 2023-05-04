@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 export const DEFAULT_TITLE = 'DEFAULT TITLE';
 export const DEFAULT_DESCRIPTION = 'DEFAULT DESCRIPTION';
 export const ATOM_HEADER_KEY = 'header';
-export type HeaderState = 'main' | '404' | 'other';
+export type HeaderState = 'main' | '404' | 'feedback' | 'other';
 export interface HeaderContent<T = unknown> {
   title: React.ComponentType<T> | string;
   description: React.ComponentType<T> | string;

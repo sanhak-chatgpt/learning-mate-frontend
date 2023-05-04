@@ -1,19 +1,22 @@
 import * as S from './BasicModal.styles';
 import { DefaultModalProps } from '@/components/UI/Modal/Modal.types';
+import React from 'react';
 
 export type BasicModalProps = {
   title: string;
 } & DefaultModalProps;
 
 export const BasicModal = ({ visible, close, title = '테스트' }: BasicModalProps) => {
-  const vis = visible ? 'true' : 'false';
   return (
     <S.Root>
-      <S.Container flex={'rowCenter'} visible={vis}>
+      <S.Container flex={'rowCenter'} visible={visible}>
         <S.Wrapper flex={'columnStart'}>
-          <header>안녕하세요 모달입니다.</header>
-          <main>나는 모달 바디</main>
-          <footer>나는 모달 푸터임 ㅋㅋ</footer>
+          <header>{title}</header>
+          <footer>
+            <S.ModalButton as={'button'} flex={'rowCenter'} onClick={close}>
+              확인
+            </S.ModalButton>
+          </footer>
         </S.Wrapper>
       </S.Container>
     </S.Root>

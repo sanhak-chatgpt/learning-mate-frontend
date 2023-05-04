@@ -9,13 +9,12 @@ export type SVGIconProps = {
   viewBox?: ViewBoxSize;
   fill?: string;
   onClick?: (...args: any) => void;
-};
+} & React.HTMLAttributes<SVGSVGElement>;
 
 const RenderLoader = () => <div></div>;
 
 export const SVGIcon = ({ name, width, height, viewBox, fill, ...props }: SVGIconProps) => {
-  const Component = React.useMemo(() => React.lazy(SVGIconRegistry[name]), []);
-  console.log(name, fill);
+  const Component = React.useMemo(() => React.lazy(SVGIconRegistry[name]), [name]);
   return (
     <Suspense fallback={<RenderLoader />}>
       <Component

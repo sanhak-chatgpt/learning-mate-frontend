@@ -13,7 +13,7 @@ import {
 export default function Home() {
   const { openModal } = useModalContext();
   const { navigateTo } = useNavigation();
-  const handleOpenModal = () => {
+  const handleOpenModal = React.useCallback(() => {
     openModal({
       type: 'PreparingService',
       props: {},
@@ -23,7 +23,11 @@ export default function Home() {
         },
       },
     });
-  };
+  }, []);
+
+  const handleForwardFeedbackPage = React.useCallback(() => {
+    navigateTo('/feedback', { process: 'major' });
+  }, []);
 
   return (
     <>
@@ -40,6 +44,7 @@ export default function Home() {
             title={'AI에게 가르치고 피드백 받기'}
             description={'가르친 내용의 90%를 기억할 수 있어요'}
             icon={{ name: 'MessageIcon', width: '5rem', height: '5rem' }}
+            onClick={handleForwardFeedbackPage}
           />
           <MemoizedDivider></MemoizedDivider>
           <ListItem

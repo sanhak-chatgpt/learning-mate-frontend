@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { Flex } from '@/components/UI/FlexBox';
 
 export const Root = styled.div`
-  min-height: 16.8rem;
   background: ${({ theme }) => theme.color.background.default};
 `;
 
@@ -14,12 +13,12 @@ export const Wrapper = styled(Flex)`
   align-items: start;
   width: 100%;
   max-width: 100%;
-  gap: 1.4rem;
   & h1 {
     font-size: ${({ theme }) => theme.size.font.xxl};
     color: ${({ theme }) => theme.color.text.g0};
     line-height: 140%;
     font-weight: 700;
+    margin-bottom: 1.4rem;
   }
 
   & h2 {
@@ -28,4 +27,9 @@ export const Wrapper = styled(Flex)`
     line-height: 140%;
     font-weight: 400;
   }
+`;
+
+export const BackwardContainer = styled(Flex)`
+  width: 100%;
+  margin-bottom: 3rem;
 `;
