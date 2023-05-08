@@ -23,7 +23,7 @@ const Divider = styled.div`
 const FeedbackResult = ({ result }: ResultProps) => {
   return (
     <S.ResultContainer flex={'columnStart'}>
-      <ListItem title="나의 강의" description={(result?.transcribed as string).slice(0, 20)} />
+      <ListItem title="나의 강의" description={result?.transcribed as string} />
       <Divider />
       <ListItem title="점수" description={result?.score + '/100'} />
       <Divider />

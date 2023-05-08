@@ -10,11 +10,11 @@ const Base = ({
   fill = 'none',
   ...props
 }: SVGProps<SVGSVGElement> & {
-  width: number | string,
-  height: number | string,
-  title: string,
-  viewBox?: ViewBoxSize,
-  fill?: string,
+  width: number | string;
+  height: number | string;
+  title: string;
+  viewBox?: ViewBoxSize;
+  fill?: string;
 }) => {
   return (
     <svg
@@ -24,7 +24,7 @@ const Base = ({
       fill={fill}
       viewBox={viewBox}
       {...props}>
-      <g fillOpacity={0.2} filter="url(#microphone_icon_svg__filter0_abi_31_463)">
+      <g fillOpacity={0.4} filter="url(#microphone_icon_svg__filter0_abi_31_463)">
         <path
           fill="url(#microphone_icon_svg__a)"
           d="M29 38.5c0-20.987 17.013-38 38-38s38 17.013 38 38v65c0 20.987-17.013 38-38 38s-38-17.013-38-38v-65Z"

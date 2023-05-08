@@ -5,6 +5,7 @@ import { BackwardContainer } from './HeaderContent.styles';
 import { SVGIcon } from '@/components/UI/SVGIcon';
 import { useNavigation } from '@/util/hooks/useNavigation';
 import { HeaderBackArrow } from '@/components/UI/SVGIcon/templates';
+import { RecordProcessState } from '@/components/Domain/Feedback/FeedbackRecord.hooks';
 
 export const HeaderContent = () => {
   const { headerContent } = useHeader();
@@ -38,8 +39,18 @@ export const HeaderContent = () => {
 
 export const HeaderBackward = () => {
   const { router } = useNavigation();
+  const recordQueryString = router.query?.record as RecordProcessState;
+
   const handlePrevPage = () => {
+    if (recordQueryString === 'success'){
+      router.push({
+        pathname: '/',
+        query: {}
+      });
+      return console.log(router.asPath)
+    }
     router.back();
+    return console.log(router.asPath)
   };
 
   return (
