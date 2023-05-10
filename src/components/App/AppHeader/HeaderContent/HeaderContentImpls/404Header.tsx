@@ -1,10 +1,8 @@
 import React from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { userState } from '@/states/state.user';
 
 export const ErrorHeaderTitle = () => {
-  const [user, setUser] = useRecoilState(userState);
-
   return (
     <>
       <h1>404 Error - Page Not Found</h1>
@@ -13,7 +11,7 @@ export const ErrorHeaderTitle = () => {
 };
 
 export const ErrorHeaderDescription = () => {
-  const [user, setUser] = useRecoilState(userState);
+  const user = useRecoilValue(userState);
 
   return (
     <>

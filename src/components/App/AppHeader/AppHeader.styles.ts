@@ -1,4 +1,3 @@
-import { Flex } from '../../UI/FlexBox';
 import styled from '@emotion/styled';
 
 export const RootContainer = styled.header`

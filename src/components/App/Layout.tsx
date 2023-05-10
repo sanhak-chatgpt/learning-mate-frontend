@@ -1,10 +1,8 @@
 import styled from '@emotion/styled';
-import { Flex } from '../UI/FlexBox';
 import React, { ReactNode } from 'react';
 import { AppHeader } from '@/components/App/AppHeader';
 import { AppFooter } from '@/components/App/AppFooter';
 import { AppContent } from '@/components/App/AppContent';
-import { FooterContent } from '@/components/App/AppFooter/FooterContent';
 
 export const Container = styled.section`
   width: 100%;

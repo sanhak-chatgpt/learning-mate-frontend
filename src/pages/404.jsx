@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { Flex } from '../components/UI/FlexBox';
 import React, { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { headerContentState } from '../states/state.header';
 import {
   ErrorHeaderTitle,
   ErrorHeaderDescription,
-} from '../components/App/AppHeader/HeaderContent/HeaderContentImpls/404Header';
+} from '../components/App/AppHeader/HeaderContent/HeaderContentImpls';
 
 export const Wrapper = styled(Flex)`
   width: 100%;
@@ -14,7 +14,7 @@ export const Wrapper = styled(Flex)`
 `;
 
 const Custom404 = () => {
-  const [headerContent, setHeaderContent] = useRecoilState(headerContentState);
+  const setHeaderContent = useSetRecoilState(headerContentState);
 
   useEffect(() => {
     setHeaderContent({
