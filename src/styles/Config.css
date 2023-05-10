@@ -70,7 +70,11 @@ ol {
 }
 
 body {
-  height: 100vh;
+  width: 100vw; /* 뷰포트의 가로 너비(100%)만큼 설정 */
+  height: 100vh; /* 뷰포트의 세로 높이(100%)만큼 설정 */
+  margin: 0; /* body 요소의 기본 margin 값을 제거 */
+  padding: 0; /* body 요소의 기본 padding 값을 제거 */
+  overflow-x: hidden; /* 가로 스크롤이 생기지 않도록 설정 */
 }
 
 #__next{

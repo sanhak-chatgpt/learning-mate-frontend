@@ -2,14 +2,11 @@ import styled from '@emotion/styled';
 import { Flex } from '@/components/UI/FlexBox';
 
 export const Root = styled.div`
-  background: ${({ theme }) => theme.color.background.default};
-`;
-
-export const Container = styled.div`
   padding: 4.2rem 2.2rem 0 2.2rem;
+  background-color: ${({ theme }) => theme.color.background.default};
 `;
 
-export const Wrapper = styled(Flex)`
+export const Container = styled(Flex)`
   align-items: start;
   width: 100%;
   max-width: 100%;
@@ -29,7 +26,14 @@ export const Wrapper = styled(Flex)`
   }
 `;
 
-export const BackwardContainer = styled(Flex)`
+export const BackwardContainer = styled(Flex)<{ visible: boolean }>`
   width: 100%;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+
+  ${({ visible }) => {
+    const visiblity = visible ? 'auto' : 'none';
+    return `
+      display:${visiblity};
+    `;
+  }}
 `;

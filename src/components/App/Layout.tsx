@@ -5,11 +5,15 @@ import { AppHeader } from '@/components/App/AppHeader';
 import { AppFooter } from '@/components/App/AppFooter';
 import { AppContent } from '@/components/App/AppContent';
 import { FooterContent } from '@/components/App/AppFooter/FooterContent';
-import { HeaderContent } from '@/components/App/AppHeader/HeaderContent';
 
-export const Wrapper = styled(Flex)`
+export const Container = styled.section`
   width: 100%;
   min-height: 100%;
+
+  padding-right: constant(safe-area-inset-right);
+  padding-left: constant(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-left: env(safe-area-inset-left);
 `;
 
 export type LayoutProps = {
@@ -18,14 +22,10 @@ export type LayoutProps = {
 
 export const Layout = ({ children }: LayoutProps) => {
   return (
-    <Wrapper flex="columnStart">
-      <AppHeader>
-        <HeaderContent></HeaderContent>
-      </AppHeader>
+    <Container>
+      <AppHeader />
       <AppContent>{children}</AppContent>
-      <AppFooter>
-        <FooterContent></FooterContent>
-      </AppFooter>
-    </Wrapper>
+      <AppFooter />
+    </Container>
   );
 };

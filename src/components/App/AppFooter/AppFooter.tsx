@@ -1,24 +1,18 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 import * as S from './AppFooter.styles';
-import { useNavigation } from '@/util/hooks/useNavigation';
+import { useRecoilValue } from 'recoil';
+import { footerConfigurationState } from '@/states/state.footer';
+import { FooterContent } from '@/components/App/AppFooter/FooterContent';
 
-export type AppFooterProps = {
-  children?: React.ReactNode;
-} & HTMLAttributes<HTMLElement>;
+export const AppFooter = () => {
+  const footerConfig = useRecoilValue(footerConfigurationState);
 
-export const AppFooter = ({ children, ...rest }: AppFooterProps) => {
-  const { getCurrentPath } = useNavigation();
-  console.log(getCurrentPath());
   return (
-    <>
-      {getCurrentPath() !== '/feedback' ? (
-        <S.Root {...rest}>
-          <S.Wrapper>{children}</S.Wrapper>
-        </S.Root>
-      ) : (
-        <div></div>
-      )}
-    </>
+    <S.Root isVisible={footerConfig.isVisible}>
+      <S.Wrapper>
+        <FooterContent />
+      </S.Wrapper>
+    </S.Root>
   );
 };
 
