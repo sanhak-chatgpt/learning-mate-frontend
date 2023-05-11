@@ -4,37 +4,31 @@ import {
   FeedbackConfigKey,
   FeedbackConfiguration,
   ProcessState,
+  useInfiniteMajorList,
+  useInfiniteSubjectList,
+  useInfiniteTopicList,
 } from '@/components/Domain/Feedback/FeedbackController.hooks';
-import {
-  getRandomHex,
-  PageMajorDtoResponse,
-  PageSubjectDtoResponse,
-  PageTopicDtoResponse,
-} from '@/util';
+import { getRandomHex } from '@/util';
 import * as S from './Feedback.styles';
 import ListItem from '@/components/UI/ListItem/ListItem';
 
 export type FeedbackConfigurationListProps = {
   handlePickItem: (key: FeedbackConfigKey, config: Config) => void;
+  feedbackConfig: FeedbackConfiguration;
+  currentProcess: ProcessState;
 };
 
-export type MajorListProps = {
-  result: PageMajorDtoResponse[];
-} & FeedbackConfigurationListProps;
+export const MajorList = ({
+  handlePickItem,
+  feedbackConfig,
+  currentProcess,
+}: FeedbackConfigurationListProps) => {
+  const query = useInfiniteMajorList(currentProcess);
 
-export type SubjectListProps = {
-  result: PageSubjectDtoResponse[];
-} & FeedbackConfigurationListProps;
-
-export type TopicListProps = {
-  result: PageTopicDtoResponse[];
-} & FeedbackConfigurationListProps;
-
-export const MajorList = ({ result, handlePickItem }: MajorListProps) => {
   return (
-    <S.Root>
-      <S.Wrapper flex={'columnStart'}>
-        {result.map((page) => {
+    <>
+      {query.data &&
+        query.data.pages.map((page) => {
           return page?.content?.map((res) => {
             return (
               <ListItem
@@ -46,16 +40,21 @@ export const MajorList = ({ result, handlePickItem }: MajorListProps) => {
             );
           });
         })}
-      </S.Wrapper>
-    </S.Root>
+    </>
   );
 };
 
-export const SubjectList = ({ result, handlePickItem }: SubjectListProps) => {
+export const SubjectList = ({
+  handlePickItem,
+  feedbackConfig,
+  currentProcess,
+}: FeedbackConfigurationListProps) => {
+  const query = useInfiniteSubjectList(currentProcess, feedbackConfig.major?.id);
+
   return (
-    <S.Root>
-      <S.Wrapper flex={'columnStart'}>
-        {result.map((page) => {
+    <>
+      {query.data &&
+        query.data.pages.map((page) => {
           return page?.content?.map((res) => {
             return (
               <ListItem
@@ -67,16 +66,21 @@ export const SubjectList = ({ result, handlePickItem }: SubjectListProps) => {
             );
           });
         })}
-      </S.Wrapper>
-    </S.Root>
+    </>
   );
 };
 
-export const TopicList = ({ result, handlePickItem }: TopicListProps) => {
+export const TopicList = ({
+  handlePickItem,
+  feedbackConfig,
+  currentProcess,
+}: FeedbackConfigurationListProps) => {
+  const query = useInfiniteTopicList(currentProcess, feedbackConfig.subject?.id);
+
   return (
-    <S.Root>
-      <S.Wrapper flex={'columnStart'}>
-        {result.map((page) => {
+    <>
+      {query.data &&
+        query.data.pages.map((page) => {
           return page?.content?.map((res) => {
             return (
               <ListItem
@@ -88,8 +92,7 @@ export const TopicList = ({ result, handlePickItem }: TopicListProps) => {
             );
           });
         })}
-      </S.Wrapper>
-    </S.Root>
+    </>
   );
 };
 
