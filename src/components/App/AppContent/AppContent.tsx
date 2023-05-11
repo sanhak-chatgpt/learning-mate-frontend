@@ -6,9 +6,5 @@ export type ContentProps = {
 };
 
 export const AppContent = ({ children }: ContentProps) => {
-  return (
-    <S.Root>
-      <S.Wrapper>{children}</S.Wrapper>
-    </S.Root>
-  );
+  return <S.Container>{children}</S.Container>;
 };

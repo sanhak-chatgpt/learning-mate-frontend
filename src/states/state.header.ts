@@ -1,15 +1,27 @@
 import { atom } from 'recoil';
 import React from 'react';
-import { useRouter } from 'next/router';
 
-export const DEFAULT_TITLE = 'DEFAULT TITLE';
-export const DEFAULT_DESCRIPTION = 'DEFAULT DESCRIPTION';
+export const DEFAULT_TITLE = 'UNINITIALIZED TITLE';
+export const DEFAULT_DESCRIPTION = 'UNINITIALIZED DESCRIPTION';
 export const ATOM_HEADER_KEY = 'header';
-export type HeaderState = 'main' | '404' | 'feedback' | 'other';
+
+export interface ENDPOINT {
+  path: string;
+  query: Record<string, string>;
+}
+export interface HistoryStackElement {
+  prev: ENDPOINT;
+  current: ENDPOINT;
+  next?: ENDPOINT;
+}
+
 export interface HeaderContent<T = unknown> {
   title: React.ComponentType<T> | string;
   description: React.ComponentType<T> | string;
-  state: HeaderState;
+  backward: {
+    visible: boolean;
+    historyStack: HistoryStackElement[];
+  };
 }
 
 export const headerContentState = atom<HeaderContent>({
@@ -17,6 +29,9 @@ export const headerContentState = atom<HeaderContent>({
   default: {
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    state: 'main',
+    backward: {
+      visible: false,
+      historyStack: [],
+    },
   },
 });
