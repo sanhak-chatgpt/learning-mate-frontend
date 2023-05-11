@@ -18,7 +18,6 @@ const FeedbackResultHelpfulnessModal = ({ title, visible, close }: FeedbackHelpM
       updatedIndex = Array(5).fill(false);
       updatedIndex[index]=true;
     }
-    console.log(updatedIndex);
     setIconIndex(updatedIndex);
   }
 
