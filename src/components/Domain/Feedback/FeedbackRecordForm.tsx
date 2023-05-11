@@ -3,7 +3,7 @@ import * as S from './Feedback.styles';
 import {
   ConfigurationList,
   ConfigurationListProps,
-} from '@/components/Domain/Feedback/FeedbackLists';
+} from '@/components/Domain/Feedback/FeedbackListForm';
 import {
   RecordButtonWrapper,
   RecordCompleteButton,
@@ -14,9 +14,9 @@ import {
 import { SVGIcon } from '@/components/UI/SVGIcon';
 import { useFeedbackRecordContoller } from '@/components/Domain/Feedback/FeedbackRecord.hooks';
 import FeedbackWait from '@/components/Domain/Feedback/Feedback.Wait';
-import FeedbackResult from '@/components/Domain/Feedback/Feedback.Result';
+import FeedbackResult from '@/components/Domain/Feedback/FeedbackResult';
 
-const FeedBackRecord = ({ config }: ConfigurationListProps) => {
+const FeedbackRecordForm = ({ config }: ConfigurationListProps) => {
   const {
     recordProcess,
     mediaRecorder,
@@ -120,4 +120,4 @@ const FeedBackRecord = ({ config }: ConfigurationListProps) => {
   );
 };
 
-export default FeedBackRecord;
+export default FeedbackRecordForm;
