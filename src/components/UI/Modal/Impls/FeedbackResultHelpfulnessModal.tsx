@@ -28,9 +28,9 @@ const FeedbackResultHelpfulnessModal = ({ title, visible, close }: FeedbackHelpM
           <header>{title}</header>
           <IconContainer as={'main'} flex={'rowCenter'} >
             <CircleIconChip name={'faceWorst'} width={20} height={20} viewBox={'0 0 20 20'} index={0} handleclick={handleIconClick} iconList={iconIndex} />
-            <CircleIconChip name={'faceBad'} width={20} height={20} viewBox={'0 0 20 20'} index={1} handleclick={handleIconClick} iconList={iconIndex} />
-            <CircleIconChip name={'faceNormal'} width={20} height={20} viewBox={'0 0 20 20'} index={2} handleclick={handleIconClick} iconList={iconIndex} />
-            <CircleIconChip name={'faceGood'} width={20} height={20} viewBox={'0 0 20 20'} index={3} handleclick={handleIconClick} iconList={iconIndex} />
+            <CircleIconChip name={'faceBad'} width={24} height={24} viewBox={'0 0 24 24'} index={1} handleclick={handleIconClick} iconList={iconIndex} />
+            <CircleIconChip name={'faceNormal'} width={24} height={24} viewBox={'0 0 24 24'} index={2} handleclick={handleIconClick} iconList={iconIndex} />
+            <CircleIconChip name={'faceGood'} width={24} height={24} viewBox={'0 0 24 24'} index={3} handleclick={handleIconClick} iconList={iconIndex} />
             <CircleIconChip name={'faceBest'} width={20} height={20} viewBox={'0 0 20 20'} index={4} handleclick={handleIconClick} iconList={iconIndex} />
           </IconContainer>
           <footer>
