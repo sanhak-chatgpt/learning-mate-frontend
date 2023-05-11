@@ -1,41 +1,12 @@
-import React, { ReactNode, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import * as S from '@/components/UI/Modal/Impls/BasicModal.styles';
 import { DefaultModalProps } from '@/components/UI/Modal/Modal.types';
 import CircleIconChip from '@/components/UI/CircleIconChip/CircleIconChip';
 import { IconContainer } from '@/components/UI/Modal/Impls/FeedbackResultHelpfulnessModal.styles';
-import { useDispatch } from 'react-redux';
 
 export type FeedbackHelpModalProps = {
   title: string;
 } & DefaultModalProps;
-/* 
-export let IconIndex = Array(5).fill(false);
-
-export const handleClickIcon = (index: number) => {
-  if ( IconIndex[index] == true ){
-    IconIndex = Array(5).fill(false);
-  }
-  else{
-    IconIndex = Array(5).fill(false);
-    IconIndex[index] =true;
-  }
-}; */
-/* 
-export const handleClick = (index: number) => {
-  console.log("click icon zz")
-  console.log(index)
-  console.log(IconIndex)
-  if ( IconIndex[index] == true ){
-    console.log("true")
-    IconIndex = Array(5).fill(false);
-  }
-  else{
-    console.log("false")
-    IconIndex = Array(5).fill(false);
-    IconIndex[index] =true;
-  }
-  console.log(IconIndex)
-}; */
 
 const FeedbackResultHelpfulnessModal = ({ title, visible, close }: FeedbackHelpModalProps) => {
   const [iconIndex, setIconIndex] = useState([false, false, false, false, false]);

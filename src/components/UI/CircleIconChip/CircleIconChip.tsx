@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useEffect } from 'react';
+import React from 'react';
 import { SVGIcon, SVGIconProps } from '@/components/UI/SVGIcon';
 import * as S from './CircleIconChip.styles';
 
@@ -7,14 +7,6 @@ export type CircleIconChipProps = SVGIconProps & {
   handleclick: (index: number) => void;
   iconList: boolean[];
 };
-/* 
-const dispatch = useDispatch();
-export const currentIndex = useSelector((state: ComponentsState) => state.currentIndex);
-
-const handleClickIcon = (index: number) =>{
-  dispatch(setCurrentIndex(index));
-}; */
-
 
 const CircleIconChip = (props: CircleIconChipProps) => {
   
