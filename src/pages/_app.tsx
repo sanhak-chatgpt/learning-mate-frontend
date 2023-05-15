@@ -7,7 +7,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import type { AppProps } from 'next/app';
 import React from 'react';
 import { RecoilRoot } from 'recoil';
-import localFont from 'next/font/local'
 import { ModalProvider } from '@/components/UI/Modal/Modal.Context';
 import { ModalRegistry } from '@/components/UI/Modal/ModalRegistry';
 

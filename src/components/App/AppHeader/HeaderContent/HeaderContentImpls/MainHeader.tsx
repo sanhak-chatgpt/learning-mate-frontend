@@ -1,9 +1,9 @@
 import React from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { userState } from '@/states/state.user';
 
 export const MainHeader = () => {
-  const [user, setUser] = useRecoilState(userState);
+  const user = useRecoilValue(userState);
 
   return (
     <>
@@ -17,8 +17,6 @@ export const MainHeader = () => {
 };
 
 export const MainHeaderDescription = () => {
-  const [user, setUser] = useRecoilState(userState);
-
   return (
     <>
       <h2>
