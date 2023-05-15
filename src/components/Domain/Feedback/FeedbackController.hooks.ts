@@ -35,17 +35,17 @@ export const useFeedbackController = () => {
   const { openModal } = useModalContext();
   const currentProcess = router.query?.process as ProcessState;
 
-  const handleForwardProcess = () => {
+  const handleForwardProcess = async () => {
     if (currentProcess === 'major') {
-      replaceQueryString({ process: 'subject' });
+      await replaceQueryString({ process: 'subject' });
     } else if (currentProcess === 'subject') {
-      replaceQueryString({ process: 'topic' });
+      await replaceQueryString({ process: 'topic' });
     } else if (currentProcess === 'topic') {
-      replaceQueryString({ process: 'lecture', record: 'idle' });
+      await replaceQueryString({ process: 'lecture', record: 'idle' });
     }
   };
 
-  const { handlePickItem, feedbackConfig, setFeedbackConfig } = useHandleFeedbackConfig({
+  const { handlePickItem, feedbackConfig } = useHandleFeedbackConfig({
     handleForwardProcess,
     queryString: currentProcess,
   });

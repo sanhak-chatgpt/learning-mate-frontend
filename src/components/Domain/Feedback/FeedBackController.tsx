@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { useFeedbackController } from '@/components/Domain/Feedback/FeedbackController.hooks';
 import { MajorList, SubjectList, TopicList } from '@/components/Domain/Feedback/FeedbackListForm';
-import FeedbackRecord from '@/components/Domain/Feedback/FeedbackRecordForm';
+import FeedbackRecord from '@/components/Domain/Feedback/Record/FeedbackRecordForm';
 import { ErrorBoundary, FallBackProps } from '@/components/Global/ErrorBoundary';
 import * as S from '@/components/Domain/Feedback/Feedback.styles';
 
