@@ -11,7 +11,9 @@ const SettingPage = () => {
       props: {},
       events: {
         onClose: () => {
-          navigateTo('/');
+          navigateTo({
+            path: '/',
+          });
         },
       },
     });
