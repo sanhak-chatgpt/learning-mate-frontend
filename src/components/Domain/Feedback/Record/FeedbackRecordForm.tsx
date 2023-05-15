@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './Feedback.styles';
+import * as S from '../Feedback.styles';
 import {
   ConfigurationList,
   ConfigurationListProps,
@@ -10,25 +10,25 @@ import {
   RecordContainer,
   RecordFooter,
   RecordIconContainer,
-} from './Feedback.styles';
+} from '../Feedback.styles';
 import { SVGIcon } from '@/components/UI/SVGIcon';
-import { useFeedbackRecordContoller } from '@/components/Domain/Feedback/FeedbackRecord.hooks';
+import { useFeedbackRecordController } from '@/components/Domain/Feedback/Record/FeedbackRecord.hooks';
 import FeedbackWait from '@/components/Domain/Feedback/Feedback.Wait';
 import FeedbackResult from '@/components/Domain/Feedback/FeedbackResult';
 
 const FeedbackRecordForm = ({ config }: ConfigurationListProps) => {
   const {
-    recordProcess,
-    mediaRecorder,
-    handleStopRecording,
-    handleStartRecording,
-    handleFeedbackResultCheck,
+    recorderState,
+    resetRecording,
+    startRecording,
+    handleResultCheckDone,
     resumeRecording,
     pauseRecording,
-    formattedTime,
+    formattedRecordingTime,
     lectureQueryStatus,
     lectureQueryData,
-  } = useFeedbackRecordContoller(config);
+    recordQueryString,
+  } = useFeedbackRecordController(config);
 
   const FeedbackResultRendered = () => {
     return lectureQueryStatus === 'loading' ? (
@@ -40,13 +40,11 @@ const FeedbackRecordForm = ({ config }: ConfigurationListProps) => {
     );
   };
 
-  // console.log('레코드 컴포넌트', mediaRecorder?.state);
-
   return (
     <>
       <S.Root>
         <S.Wrapper flex={'columnStart'}>
-          {(recordProcess === 'idle' || recordProcess === 'record') && (
+          {(recordQueryString === 'idle' || recordQueryString === 'record') && (
             <>
               <RecordContainer flex={'columnCenter'}>
                 <ConfigurationList config={config}></ConfigurationList>
@@ -66,47 +64,42 @@ const FeedbackRecordForm = ({ config }: ConfigurationListProps) => {
                     viewBox={'0 0 87 87'}
                   />
                 </RecordIconContainer>
-                <h1>{formattedTime} / 05:00</h1>
+                <h1>{formattedRecordingTime} / 05:00</h1>
               </RecordContainer>
             </>
           )}
 
-          {recordProcess === 'progress' && <FeedbackWait />}
-          {recordProcess === 'success' && <FeedbackResultRendered />}
+          {recordQueryString === 'progress' && <FeedbackWait />}
+          {recordQueryString === 'success' && <FeedbackResultRendered />}
 
           <RecordFooter>
             <RecordButtonWrapper flex={'rowCenter'}>
-              {recordProcess === 'idle' ? (
+              {recordQueryString === 'idle' ? (
                 <SVGIcon
                   name={'RecordIcon'}
                   width={64}
                   height={64}
                   viewBox={'0 0 64 64'}
-                  onClick={handleStartRecording}
+                  onClick={startRecording}
                 />
-              ) : recordProcess === 'record' ? (
+              ) : recordQueryString === 'record' ? (
                 <>
                   <SVGIcon
-                    name={mediaRecorder?.state === 'recording' ? 'PauseIcon' : 'RecordIcon'}
+                    name={recorderState === 'record' ? 'PauseIcon' : 'RecordIcon'}
                     width={64}
                     height={64}
                     viewBox={'0 0 64 64'}
-                    onClick={
-                      mediaRecorder?.state === 'recording' ? pauseRecording : resumeRecording
-                    }
+                    onClick={recorderState === 'record' ? pauseRecording : resumeRecording}
                   />
-                  <RecordCompleteButton
-                    as={'button'}
-                    flex={'rowCenter'}
-                    onClick={handleStopRecording}>
+                  <RecordCompleteButton as={'button'} flex={'rowCenter'} onClick={resetRecording}>
                     완료하기
                   </RecordCompleteButton>
                 </>
-              ) : recordProcess === 'success' ? (
+              ) : recordQueryString === 'success' ? (
                 <RecordCompleteButton
                   as={'button'}
                   flex={'rowCenter'}
-                  onClick={handleFeedbackResultCheck}>
+                  onClick={handleResultCheckDone}>
                   확인 완료
                 </RecordCompleteButton>
               ) : (
