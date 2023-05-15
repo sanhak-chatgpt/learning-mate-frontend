@@ -1,14 +1,9 @@
 import React, { HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import * as S from './Feedback.styles';
-import { SVGIcon } from '@/components/UI/SVGIcon';
-import { useFeedbackRecordContoller } from '@/components/Domain/Feedback/FeedbackRecord.hooks';
-import FeedbackWait from '@/components/Domain/Feedback/Feedback.Wait';
+
 import ListItem from '@/components/UI/ListItem/ListItem';
 import { LectureDtoResponse } from '@/util';
-
-export type ResultListTitle = string;
-export type ResultListDescription = string;
 
 export type ResultProps = {
   result: LectureDtoResponse | undefined;

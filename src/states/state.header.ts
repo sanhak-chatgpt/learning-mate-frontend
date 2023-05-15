@@ -7,7 +7,7 @@ export const ATOM_HEADER_KEY = 'header';
 
 export interface ENDPOINT {
   path: string;
-  query: Record<string, string>;
+  query?: Record<string, string>;
 }
 export interface HistoryStackElement {
   prev: ENDPOINT;

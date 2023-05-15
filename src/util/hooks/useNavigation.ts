@@ -32,8 +32,8 @@ export const useNavigation = () => {
     []
   );
 
-  const replaceQueryString = (query: Record<string, string>) => {
-    navigateTo({ path: getCurrentPath(), query });
+  const replaceQueryString = async (query: Record<string, string>) => {
+    await navigateTo({ path: getCurrentPath(), query });
   };
 
   const getCurrentPath = () => {
