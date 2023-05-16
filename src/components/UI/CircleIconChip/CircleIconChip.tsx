@@ -16,6 +16,7 @@ const CircleIconChip = (props: CircleIconChipProps) => {
         flex={'rowCenter'}
         index={props.index}
         list={props.iconList}
+        isToggled={props.iconList[props.index]}
         onClick={() => props.handleclick(props.index)} >
         <SVGIcon {...props}></SVGIcon>
       </S.Wrapper>
