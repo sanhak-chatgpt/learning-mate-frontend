@@ -1,4 +1,3 @@
-import { getDeviceEnvironment } from '@/util/Agent';
 import { BaseError } from '@/util/Error';
 
 export interface RecorderConfig {
@@ -9,19 +8,6 @@ export interface RecorderConfig {
   onPause?: (...args: any) => void;
   onError?: (...args: any) => void;
 }
-
-export type NativePermissionState = 'granted' | 'denied' | 'permanently_denied';
-
-export const createNativeAudioMediaRecorder = (status: NativePermissionState) => {
-  if (status === 'granted') {
-    // return new AudioMediaRecorder();
-  }
-  return undefined;
-};
-
-export const getNativeMicrophonePermission = () => {
-  window.FlutterBridge?.postMessage('requestMicrophonePermission');
-};
 
 export class AudioMediaRecorder {
   recorder: MediaRecorder | undefined;
@@ -45,6 +31,7 @@ export class AudioMediaRecorder {
   public pauseRecord = () => {
     this.recorder?.pause();
   };
+
   public getRecorderConfig = () => {
     return this.recorderConfig;
   };

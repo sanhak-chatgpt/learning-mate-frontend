@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AudioMediaRecorder, RecorderConfig } from '@/util/AudioRecorder';
-import { useNavigation } from '@/util/hooks/useNavigation';
 import { useObservableTimer } from '@/util/hooks/useRecordTimer';
 
 export type AudioRecorderProps = {
