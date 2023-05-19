@@ -10,7 +10,7 @@ export type FeedbackHelpModalProps = {
 } & DefaultModalProps;
 
 const FeedbackResultHelpfulnessModal = ({ title, visible, close }: FeedbackHelpModalProps) => {
-  const [iconIndex, setIconIndex] = useState<string>("");
+  const [iconName, setIconName] = useState<string>("");
 
   return (
     <S.Root>
@@ -18,7 +18,7 @@ const FeedbackResultHelpfulnessModal = ({ title, visible, close }: FeedbackHelpM
         <S.Wrapper flex={'columnStart'}>
           <header>{title}</header>
           <IconContainer as={'main'} flex={'rowCenter'} >
-            <CircleIconGroup values={iconIndex} onChange={setIconIndex} >
+            <CircleIconGroup values={iconName} onChange={setIconName} >
               <CircleIconChip name={'faceWorst'} width={20} height={20} viewBox={'0 0 20 20'}  />
               <CircleIconChip name={'faceBad'} width={24} height={24} viewBox={'0 0 24 24'}  />
               <CircleIconChip name={'faceNormal'} width={24} height={24} viewBox={'0 0 24 24'}  />

@@ -11,7 +11,7 @@ type CircleIconGroupProps = {
 export const CircleIconGroup = ({ children, values, onChange }: CircleIconGroupProps) => {
     const isChecked = (value: any) => values === value;
     const toggleValue = (value: any) => {
-        if(value===values){
+        if(isChecked(value)){
             onChange("");
         }
         else{
