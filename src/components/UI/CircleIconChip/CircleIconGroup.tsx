@@ -9,10 +9,16 @@ type CircleIconGroupProps = {
 }
 
 export const CircleIconGroup = ({ children, values, onChange }: CircleIconGroupProps) => {
-    const isChecked = (value: any) => values === value
-    const toggleValue = (checked: any, value: any) => {
-        
+    const isChecked = (value: any) => values === value;
+    const toggleValue = (value: any) => {
+        if(value===values){
+            onChange("");
+        }
+        else{
+            onChange(value);
+        }
     }
+    
     return(
         <CircleIconContext.Provider value={{ isChecked, toggleValue }}>
             {children}

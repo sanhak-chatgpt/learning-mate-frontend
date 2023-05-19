@@ -6,8 +6,8 @@ import { CircleIconContext } from './CircleIconContext';
 export type CircleIconChipProps = SVGIconProps
 
 const CircleIconChip = (props: CircleIconChipProps) => {
-  const context = React.useContext(CircleIconContext)
-  const [isToggled, setIsToggled] = useState<boolean>(false)
+  const context = React.useContext(CircleIconContext);
+  const [isToggled, setIsToggled] = useState<boolean>(false);
 
   if(!context){
     return(
@@ -29,8 +29,8 @@ const CircleIconChip = (props: CircleIconChipProps) => {
     <S.Root>
       <S.Wrapper
         flex={'rowCenter'}
-        isToggled={isToggled}
-        onClick={() => setIsToggled((prev) => !prev)} >
+        isToggled={isChecked(props.name)}
+        onClick={() => toggleValue(props.name)} >
         <SVGIcon {...props}></SVGIcon>
       </S.Wrapper>
     </S.Root>
