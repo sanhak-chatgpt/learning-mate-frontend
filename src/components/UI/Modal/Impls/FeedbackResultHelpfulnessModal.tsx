@@ -3,23 +3,14 @@ import * as S from '@/components/UI/Modal/Impls/BasicModal.styles';
 import { DefaultModalProps } from '@/components/UI/Modal/Modal.types';
 import CircleIconChip from '@/components/UI/CircleIconChip/CircleIconChip';
 import { IconContainer } from '@/components/UI/Modal/Impls/FeedbackResultHelpfulnessModal.styles';
+import { CircleIconGroup } from '@/components/UI/CircleIconChip/CircleIconGroup';
 
 export type FeedbackHelpModalProps = {
   title: string;
 } & DefaultModalProps;
 
 const FeedbackResultHelpfulnessModal = ({ title, visible, close }: FeedbackHelpModalProps) => {
-  const [iconIndex, setIconIndex] = useState([false, false, false, false, false]);
-
-  const handleIconClick = (index: number) => {
-    let updatedIndex = [...iconIndex];
-    if( updatedIndex[index] == true ){  updatedIndex[index]= false; }
-    else{ 
-      updatedIndex = Array(5).fill(false);
-      updatedIndex[index]=true;
-    }
-    setIconIndex(updatedIndex);
-  }
+  const [iconIndex, setIconIndex] = useState<string>("");
 
   return (
     <S.Root>
@@ -27,11 +18,13 @@ const FeedbackResultHelpfulnessModal = ({ title, visible, close }: FeedbackHelpM
         <S.Wrapper flex={'columnStart'}>
           <header>{title}</header>
           <IconContainer as={'main'} flex={'rowCenter'} >
-            <CircleIconChip name={'faceWorst'} width={20} height={20} viewBox={'0 0 20 20'} index={0} handleclick={handleIconClick} iconList={iconIndex} />
-            <CircleIconChip name={'faceBad'} width={20} height={20} viewBox={'0 0 20 20'} index={1} handleclick={handleIconClick} iconList={iconIndex} />
-            <CircleIconChip name={'faceNormal'} width={20} height={20} viewBox={'0 0 20 20'} index={2} handleclick={handleIconClick} iconList={iconIndex} />
-            <CircleIconChip name={'faceGood'} width={20} height={20} viewBox={'0 0 20 20'} index={3} handleclick={handleIconClick} iconList={iconIndex} />
-            <CircleIconChip name={'faceBest'} width={20} height={20} viewBox={'0 0 20 20'} index={4} handleclick={handleIconClick} iconList={iconIndex} />
+            <CircleIconGroup values={iconIndex} onChange={setIconIndex} >
+              <CircleIconChip name={'faceWorst'} width={20} height={20} viewBox={'0 0 20 20'} />
+              <CircleIconChip name={'faceBad'} width={20} height={20} viewBox={'0 0 20 20'} />
+              <CircleIconChip name={'faceNormal'} width={20} height={20} viewBox={'0 0 20 20'} />
+              <CircleIconChip name={'faceGood'} width={20} height={20} viewBox={'0 0 20 20'} />
+              <CircleIconChip name={'faceBest'} width={20} height={20} viewBox={'0 0 20 20'} />
+            </CircleIconGroup>
           </IconContainer>
           <footer>
             <S.ModalButton as={'button'} flex={'rowCenter'} onClick={close}>

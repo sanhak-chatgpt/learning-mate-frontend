@@ -6,10 +6,10 @@ export const Root = styled.div`
   height: 3.6rem;
 `;
 
-export const Wrapper = styled(Flex)<{index : number, list: boolean[]}>`
+export const Wrapper = styled(Flex)<{ isToggled: boolean }>`
   border-radius: 50%;
   width: 100%;
   height: 100%;
   gap: 0.8rem;
-  background-color: ${({ theme, index, list }) => (list[index] ? theme.color.nav.active : '#F6F7FB')};
+  background-color: ${({ theme, isToggled }) => (isToggled ? theme.color.nav.active : '#F6F7FB')};
 `;

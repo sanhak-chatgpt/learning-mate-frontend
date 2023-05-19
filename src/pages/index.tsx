@@ -15,8 +15,10 @@ export default function Home() {
   const { navigateTo } = useNavigation();
   const handleOpenModal = React.useCallback(() => {
     openModal({
-      type: 'PreparingService',
-      props: {},
+      type: 'FeedbackResultHelpfulness',
+      props: {
+        title: '얼마나 도움??'
+      },
       events: {
         onClose: () => {
           navigateTo('/');
