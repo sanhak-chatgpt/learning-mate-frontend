@@ -1,4 +1,4 @@
-import { ObservableAbstraction, ObserverFunc } from '@/util/Observable';
+import { ObservableAbstraction, ObserverFunc } from '@/util/models/Observable';
 
 export interface BridgeService<TRequestMessage, TResponseParam> {
   send: (message: TRequestMessage) => void;
@@ -45,8 +45,8 @@ export class BridgeController<TService extends BridgeService<any, any>>
     this.notify();
   };
 
-  public receiveMessage = (message: ResponseParamOf<TService>): void => {
-    this.implementation.receive(message);
+  public receiveMessage = (params: ResponseParamOf<TService>): void => {
+    this.implementation.receive(params);
     this.notify();
   };
 

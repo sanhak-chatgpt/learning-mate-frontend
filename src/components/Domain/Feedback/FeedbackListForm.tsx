@@ -8,7 +8,7 @@ import {
   useInfiniteSubjectList,
   useInfiniteTopicList,
 } from '@/components/Domain/Feedback/FeedbackController.hooks';
-import { getRandomHex } from '@/util';
+import { getRandomHex } from '@/util/models/Number';
 import * as S from './Feedback.styles';
 import ListItem from '@/components/UI/ListItem/ListItem';
 

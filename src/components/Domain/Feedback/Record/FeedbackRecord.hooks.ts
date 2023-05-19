@@ -1,12 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigation } from '@/util/hooks/useNavigation';
 import { useModalContext } from '@/components/UI/Modal/Modal.hooks';
-import {
-  BaseError,
-  GeneratePresignedUrlControllerApi,
-  LectureControllerApi,
-  request,
-} from '@/util';
+import { GeneratePresignedUrlControllerApi, LectureControllerApi } from '@/util/Api';
 import { useHeader } from '@/components/App/AppHeader/HeaderContent';
 import { FeedbackConfiguration } from '@/components/Domain/Feedback/FeedbackController.hooks';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -14,6 +9,8 @@ import { useAudioRecorder } from '@/util/hooks/useAudioRecorder';
 import { microphonePermissionBridgeController } from '@/bridge/services/Bridge.MicrphonePermission.service';
 import { useRecoilValue } from 'recoil';
 import { agentState } from '@/states/state.agent';
+import { BaseError } from '@/util/models/Error';
+import { request } from '@/util/models/Fetch';
 
 export type RecordProcessState = 'idle' | 'record' | 'progress' | 'success';
 
@@ -107,6 +104,7 @@ const useFeedbackAudioRecorder = () => {
     if (!agentController.isOnWebview()) {
       const describe = micPermissionController.subscribe(function () {
         //micPermissionController.receiveMessage 호출 시 마다 옵저버 함수가 실행돼, 리액트 라이프사이클과 연동
+
         setIsGranted(this.getServiceImpl().getIsGranted());
       });
       micPermissionController.requestMessage('requestMicrophonePermission');

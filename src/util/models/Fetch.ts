@@ -1,4 +1,4 @@
-import { BaseError } from '.';
+import { BaseError } from '@/util/models/Error';
 
 export const request = async (url: string, request_config: RequestInit = {}): Promise<Response> => {
   try {

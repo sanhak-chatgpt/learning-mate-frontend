@@ -1,4 +1,4 @@
-import { Observable, ObserverFunc } from '@/util/Observable';
+import { Observable, ObserverFunc } from '@/util/models/Observable';
 
 export type TimerObserver = ObserverFunc<ObservableTimer>;
 

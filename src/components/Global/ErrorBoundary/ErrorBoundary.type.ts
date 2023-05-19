@@ -1,5 +1,5 @@
-import { BaseError } from '@/util';
 import React from 'react';
+import { BaseError } from '@/util/models/Error';
 
 export type FallBackProps = {
   error: BaseError | undefined;
@@ -8,10 +8,7 @@ export type FallBackProps = {
 
 export declare function FallbackRender(
   props: FallBackProps
-): React.ReactElement<
-  unknown,
-  string | React.FunctionComponent | typeof React.Component
-> | null;
+): React.ReactElement<unknown, string | React.FunctionComponent | typeof React.Component> | null;
 
 export type ErrorBoundaryState = {
   error: BaseError | undefined;
@@ -33,6 +30,4 @@ export type ErrorBoundaryPropsWithRenderer = {
   FallbackRenderer: typeof FallbackRender;
 } & DefaultErrorBoundaryProps;
 
-export type ErrorBoundaryProps =
-  | ErrorBoundaryPropsWithComponent
-  | ErrorBoundaryPropsWithRenderer;
+export type ErrorBoundaryProps = ErrorBoundaryPropsWithComponent | ErrorBoundaryPropsWithRenderer;

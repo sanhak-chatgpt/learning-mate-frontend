@@ -1,4 +1,4 @@
-import React, { DispatchWithoutAction, useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useHeader } from '@/components/App/AppHeader/HeaderContent';
 import {
   MainHeader,
@@ -9,7 +9,7 @@ import {
   TopicHeader,
 } from '@/components/App/AppHeader/HeaderContent/HeaderContentImpls/FeedbackHeader';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { MajorControllerApi, SubjectControllerApi, TopicControllerApi } from '@/util';
+import { MajorControllerApi, SubjectControllerApi, TopicControllerApi } from '@/util/Api';
 import { useNavigation } from '@/util/hooks/useNavigation';
 import { useModalContext } from '@/components/UI/Modal/Modal.hooks';
 import { useSetRecoilState } from 'recoil';

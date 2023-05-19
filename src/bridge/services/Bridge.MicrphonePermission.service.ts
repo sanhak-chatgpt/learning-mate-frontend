@@ -1,4 +1,4 @@
-import { AgentController } from '@/util/Agent';
+import { AgentController } from '@/util/models/Agent';
 import { BridgeController, BridgeService } from '@/bridge';
 
 export type MicPermissionResponseParam = 'GRANTED' | 'DENIED';
