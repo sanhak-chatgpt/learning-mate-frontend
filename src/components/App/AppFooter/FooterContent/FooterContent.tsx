@@ -1,46 +1,33 @@
-import { SVGIcon, SVGIconProps } from '@/components/UI/SVGIcon';
-
-export * from './FooterContent';
-export * from './FooterContent.styles';
 import React from 'react';
-import * as S from './FooterContent.styles';
 import Link from 'next/link';
-import { useNavigation } from '@/util/hooks/useNavigation';
-import { useTheme } from '@emotion/react';
 import { IconRegistryKey } from '@/components/UI/SVGIcon/SVGIcon.registry';
+import { SVGIcon, SVGIconProps } from '@/components/UI/SVGIcon';
+import * as S from './FooterContent.styles';
+import { useNavIcon } from './FooterContent.hooks';
 
-export type NavItemName = IconRegistryKey;
 export type NavItemPath = `/${string}`;
 
-export type NavItem<TName = NavItemName, TPath = NavItemPath> = { name: TName; path: TPath };
-export const NAV_URL_ASSETS: Array<NavItem> = [
+export type NavItem<TName = IconRegistryKey, TPath = NavItemPath> = { name: TName; path: TPath };
+export const NAV_ITEM_PRESET: Array<NavItem> = [
   { name: 'NavHomeIcon', path: '/' },
   { name: 'NavSettingIcon', path: '/setting' },
 ];
 
 export type NavIconProps = {
-  name: NavItemName;
+  name: IconRegistryKey;
   directionPath: NavItemPath;
 } & Omit<SVGIconProps, 'color'>;
 
 export const NavIcon = ({ name, directionPath, ...props }: NavIconProps) => {
-  const { getCurrentPath, navigateTo } = useNavigation();
-  const theme = useTheme();
+  const { handleNavigation, evaluatedIconColor } = useNavIcon(directionPath);
 
-  const handleRoute = () => {
-    navigateTo(directionPath);
-  };
-
-  const totalColor =
-    getCurrentPath() === directionPath ? theme.color.nav.active : theme.color.nav.disabled;
-
-  return <SVGIcon name={name} {...props} onClick={handleRoute} fill={totalColor} />;
+  return <SVGIcon name={name} {...props} onClick={handleNavigation} fill={evaluatedIconColor} />;
 };
 
 export const FooterContent = () => {
   return (
     <S.Wrapper as={'ul'} flex={'rowCenter'}>
-      {NAV_URL_ASSETS.map((item) => {
+      {NAV_ITEM_PRESET?.map((item) => {
         return (
           <S.IconContainer as={'li'} flex={'rowCenter'} key={item.name}>
             <Link href={item.path}>

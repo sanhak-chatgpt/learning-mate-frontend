@@ -1,5 +1,5 @@
-import { BaseError } from '@/util';
-import React, { SetStateAction } from 'react';
+import { BaseError } from '@/util/models/Error';
+import React from 'react';
 
 export type ErrorState<TError extends BaseError> = {
   error: TError | undefined;
