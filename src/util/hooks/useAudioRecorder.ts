@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AudioMediaRecorder, RecorderConfig } from '@/util/AudioRecorder';
+import { AudioMediaRecorder, RecorderConfig } from '@/util/models/AudioRecorder';
 import { useObservableTimer } from '@/util/hooks/useRecordTimer';
 
 export type AudioRecorderProps = {

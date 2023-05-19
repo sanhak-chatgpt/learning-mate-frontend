@@ -1,4 +1,4 @@
-import { BaseError } from '@/util/Error';
+import { BaseError } from '@/util/models/Error';
 
 export interface RecorderConfig {
   onStart?: (...args: any) => void;

@@ -6,8 +6,7 @@ import {
   OverlayOptions,
 } from '@/components/UI/Modal/Modal.types';
 import React from 'react';
-import { getRandomHex } from '@/util';
-import { reducer } from 'next/dist/client/components/router-reducer/router-reducer';
+import { getRandomHex } from '@/util/models/Number';
 
 export const ACTION_TYPE_MODAL_CLOSE = 'CLOSE';
 export const ACTION_TYPE_MODAL_OPEN = 'OPEN';

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ObservableTimer } from '@/util/Timer';
+import { ObservableTimer } from '@/util/models/Timer';
 
 export const useObservableTimer = () => {
   const [recordTimer, setRecordTimer] = useState<ObservableTimer>(() => new ObservableTimer());

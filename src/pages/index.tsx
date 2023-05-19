@@ -10,11 +10,23 @@ import {
 import { useRecoilState } from 'recoil';
 import { headerContentState } from '@/states/state.header';
 import { MemoizedDivider, MemoizedPlaceHolder, Root, Wrapper } from '@/components/Domain/Home';
+import { JWT_TOKEN_KEY, localStorageManager, USER_NAME_KEY } from '@/util/models/Storage';
+import { UserControllerApi } from '@/util/Api';
 
 export default function Home() {
   const { openModal } = useModalContext();
   const { navigateTo } = useNavigation();
   const [headerContent, setHeaderContent] = useRecoilState(headerContentState);
+
+  useEffect(() => {
+    if (!localStorageManager.getItem(JWT_TOKEN_KEY)) {
+      const api = new UserControllerApi();
+      const token = api.issueToken().then((res) => {
+        localStorageManager.setItem(JWT_TOKEN_KEY, res.authToken);
+        localStorageManager.setItem(USER_NAME_KEY, res.name);
+      });
+    }
+  }, []);
 
   const handleOpenModal = React.useCallback(() => {
     openModal({
