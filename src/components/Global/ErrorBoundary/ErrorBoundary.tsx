@@ -1,4 +1,4 @@
-import { BaseError } from '@/util';
+import { BaseError } from '@/util/models/Error';
 import React from 'react';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './index';
 

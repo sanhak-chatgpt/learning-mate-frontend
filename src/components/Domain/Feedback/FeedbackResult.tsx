@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import * as S from './Feedback.styles';
 
 import ListItem from '@/components/UI/ListItem/ListItem';
-import { LectureDtoResponse } from '@/util';
+import { LectureDtoResponse } from '@/util/Api';
 
 export type ResultProps = {
   result: LectureDtoResponse | undefined;

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
-import { BaseError } from '@/util';
+import { BaseError } from '@/util/models/Error';
 
 export type SuccessCallback<T, R> = (arg?: T) => R;
 
