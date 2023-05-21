@@ -91,6 +91,8 @@ export class AudioMediaRecorder {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       return new MediaRecorder(stream);
     } catch (e) {
+      console.log(e)
+      console.log((e as Error).message)
       throw new BaseError('마이크 권한을 허용해주세요!');
     }
   };
