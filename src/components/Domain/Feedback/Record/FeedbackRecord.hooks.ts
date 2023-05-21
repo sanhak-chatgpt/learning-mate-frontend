@@ -120,14 +120,12 @@ const useFeedbackAudioRecorder = () => {
     }
   }, []);
 
-  useEffect(() => {
-    micPermissionController.receiveMessage('GRANTED'); //리시브 메세지 메서드는 Flutter 측에서 호출 및 호출 시 리렌더링
-  }, []);
-
   const handleStartRecording = async () => {
     console.log(isGranted);
     if (isGranted) {
       await startRecording();
+    }else{
+      micPermissionController.requestMessage('requestMicrophonePermission');
     }
   };
 
