@@ -13,5 +13,9 @@ export const Container = styled(Flex)`
     color:${({theme})=>theme.color.text.g0};
     font-weight:700;
   }
+
+  & a{
+    width:100%;
+  }
   
 `
