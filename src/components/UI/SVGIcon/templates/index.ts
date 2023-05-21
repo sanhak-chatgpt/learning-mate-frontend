@@ -1,3 +1,4 @@
+export { default as RankingPageIcon } from './RankingPageIcon';
 export { default as ExplorerIcon } from './ExplorerIcon';
 export { default as FaceBad } from './FaceBad';
 export { default as FaceBest } from './FaceBest';
