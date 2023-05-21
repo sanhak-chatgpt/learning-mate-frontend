@@ -1,4 +1,4 @@
-import { RankingTrophy } from './templates';
+
 
 export const SVGIconRegistry = {
   ExplorerIcon: () => import('./templates/ExplorerIcon'),
