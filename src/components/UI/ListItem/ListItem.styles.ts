@@ -20,6 +20,7 @@ export const ListItemRoot = styled.li<{ itemSize?: { width?: string; height?: st
 export const ListItemWrapper = styled(Flex)`
   height: 100%;
   width: 100%;
+  border-bottom: 1px solid #f1f3f8;
   background: ${({ theme }) => theme.color.background.default};
 
   h3 {

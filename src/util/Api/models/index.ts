@@ -15,4 +15,3 @@ export * from './SortObject';
 export * from './SubjectDtoResponse';
 export * from './TopicDtoResponse';
 export * from './UserDtoMe';
-export * from './UserDtoNickName';

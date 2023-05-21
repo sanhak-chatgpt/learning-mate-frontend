@@ -1,15 +1,30 @@
 import React, { useCallback, useEffect } from 'react';
 import { useModalContext } from '@/components/UI/Modal/Modal.hooks';
 import { useNavigation } from '@/util/hooks/useNavigation';
-import MyPageController from '@/components/Domain/setting/MyPage';
 
 const SettingPage = () => {
+  const { openModal } = useModalContext();
+  const { getCurrentPath, navigateTo } = useNavigation();
+  const handleOpenModal = () => {
+    openModal({
+      type: 'PreparingService',
+      props: {},
+      events: {
+        onClose: () => {
+          navigateTo({
+            path: '/',
+          });
+        },
+      },
+    });
+  };
 
-  return (
-    <MyPageController/>
-  );
+  useEffect(() => {
+    if (getCurrentPath() === '/setting') handleOpenModal();
+    return () => {};
+  }, []);
+
+  return <div>마이페이지</div>;
 };
-
-
 
 export default SettingPage;
