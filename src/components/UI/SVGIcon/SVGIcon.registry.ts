@@ -14,6 +14,7 @@ export const SVGIconRegistry = {
   faceNormal: () => import('./templates/FaceNormal'),
   faceGood: () => import('./templates/FaceGood'),
   faceBest: () => import('./templates/FaceBest'),
+  RankingPageIcon: () => import('./templates/RankingPageIcon')
 };
 
 export type IconRegistryKey = keyof typeof SVGIconRegistry;
