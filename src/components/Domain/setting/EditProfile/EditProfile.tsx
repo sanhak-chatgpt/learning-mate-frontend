@@ -14,7 +14,7 @@ const {nameInputRef, handleNameSubmit} =useEditProfile()
     <KeywordBox title={'닉네임 변경'}>
       <form action="submit">
         <input type="text" ref={nameInputRef}  />
-        <button onClick={handleNameSubmit}>변경하기</button>
+        {/*<button onClick={handleNameSubmit}>변경하기</button>*/}
       </form>
     </KeywordBox>
   );
