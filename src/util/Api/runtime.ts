@@ -13,8 +13,6 @@
  */
 
 import { JWT_TOKEN_KEY, localStorageManager } from "../models/Storage";
-
-
 export const BASE_PATH = "https://api.thelearningmate.com".replace(/\/+$/, "");
 
 export interface ConfigurationParameters {
@@ -151,9 +149,10 @@ export class BaseAPI {
             url += '?' + this.configuration.queryParamsStringify(context.query);
         }
 
-        const headers = Object.assign({}, this.configuration.headers, context.headers,  {
+        const headers = Object.assign({}, this.configuration.headers, context.headers, {
             Authorization: `Bearer ${localStorageManager.getItem(JWT_TOKEN_KEY)}`,
         });
+
         Object.keys(headers).forEach(key => headers[key] === undefined ? delete headers[key] : {});
 
         const initOverrideFn =

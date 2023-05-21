@@ -18,9 +18,11 @@ export class MicrophonePermissionBridgeService
   }
 
   public send(message: MicPermissionRequestMessage): void {
-    if (this.agentController.isOnWebview()) {
-      window.FlutterBridge?.postMessage(message);
-    }
+    window.FlutterBridge?.postMessage(message);
+    // if (this.agentController.isOnWebview()) {
+    //   console.log('웹뷰위에있음')
+    //   window.FlutterBridge?.postMessage(message);
+    // }
   }
 
   public getIsGranted(): boolean {

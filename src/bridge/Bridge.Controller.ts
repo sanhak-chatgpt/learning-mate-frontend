@@ -42,6 +42,7 @@ export class BridgeController<TService extends BridgeService<any, any>>
 
   public requestMessage = (message: RequestMessageOf<TService>): void => {
     this.implementation.send(message);
+    console.log(message)
     this.notify();
   };
 
