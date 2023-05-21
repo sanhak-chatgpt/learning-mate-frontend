@@ -15,17 +15,61 @@
 
 import * as runtime from '../runtime';
 import type {
+  LectureDtoResponse,
   UserDtoMe,
+  UserDtoNickName,
 } from '../models';
 import {
+    LectureDtoResponseFromJSON,
+    LectureDtoResponseToJSON,
     UserDtoMeFromJSON,
     UserDtoMeToJSON,
+    UserDtoNickNameFromJSON,
+    UserDtoNickNameToJSON,
 } from '../models';
+
+export interface UpdateUserNicknameRequest {
+    userDtoNickName: UserDtoNickName;
+}
 
 /**
  * 
  */
 export class UserControllerApi extends runtime.BaseAPI {
+
+    /**
+     * 자신의 lecture 전부 조회 api
+     */
+    async getLecturesByUserIdRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LectureDtoResponse>>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("bearer-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/api/v1/users/lectures`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LectureDtoResponseFromJSON));
+    }
+
+    /**
+     * 자신의 lecture 전부 조회 api
+     */
+    async getLecturesByUserId(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LectureDtoResponse>> {
+        const response = await this.getLecturesByUserIdRaw(initOverrides);
+        return await response.value();
+    }
 
     /**
      */
@@ -48,6 +92,51 @@ export class UserControllerApi extends runtime.BaseAPI {
      */
     async issueToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserDtoMe> {
         const response = await this.issueTokenRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * nickName 변경 api
+     */
+    async updateUserNicknameRaw(requestParameters: UpdateUserNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+        if (requestParameters.userDtoNickName === null || requestParameters.userDtoNickName === undefined) {
+            throw new runtime.RequiredError('userDtoNickName','Required parameter requestParameters.userDtoNickName was null or undefined when calling updateUserNickname.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("bearer-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/api/v1/users/name`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UserDtoNickNameToJSON(requestParameters.userDtoNickName),
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<string>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * nickName 변경 api
+     */
+    async updateUserNickname(requestParameters: UpdateUserNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.updateUserNicknameRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
