@@ -18,6 +18,7 @@ export class AgentController {
   };
 
   public isOnWebview = () => {
+    console.log(this.getDeviceEnvironment())
     return this.getDeviceEnvironment() === 'WEBVIEW';
   };
 }
