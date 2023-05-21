@@ -10,9 +10,6 @@ export type ThemeProviderProps =  React.PropsWithChildren<{
 
 
 export const ThemeProvider = ({children}:ThemeProviderProps) => {
-  const {theme} = useControllTheme()
-
-
-
+  const theme = useRecoilValue(themeState);
   return <EmotionThemeProvider theme={theme}>{children}</EmotionThemeProvider>
 }
