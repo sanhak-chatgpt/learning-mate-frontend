@@ -1,3 +1,5 @@
+import { RankingTrophy } from './templates';
+
 export const SVGIconRegistry = {
   ExplorerIcon: () => import('./templates/ExplorerIcon'),
   GradientCircleIcon: () => import('./templates/GradientCircleIcon'),
@@ -14,7 +16,8 @@ export const SVGIconRegistry = {
   faceNormal: () => import('./templates/FaceNormal'),
   faceGood: () => import('./templates/FaceGood'),
   faceBest: () => import('./templates/FaceBest'),
-  RankingPageIcon: () => import('./templates/RankingPageIcon')
+  RankingPageIcon: () => import('./templates/RankingPageIcon'),
+  RankingTrophy: () => import('./templates/RankingTrophy')
 };
 
 export type IconRegistryKey = keyof typeof SVGIconRegistry;
