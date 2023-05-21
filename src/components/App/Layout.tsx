@@ -8,6 +8,8 @@ export const Container = styled.section`
   width: 100%;
   min-height: 100%;
 
+  background-color: ${({theme})=> theme.color.background.default};
+  
   padding-right: constant(safe-area-inset-right);
   padding-left: constant(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
