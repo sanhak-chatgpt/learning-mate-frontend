@@ -10,7 +10,9 @@ export class MicrophonePermissionBridgeService
   constructor(private agentController: AgentController, private isGranted: boolean = false) {}
 
   public receive(params: MicPermissionResponseParam): void {
+    console.log('메세지 받긴 받음')
     if (params === 'GRANTED') {
+      console.log('허용됐긴 함')
       this.setIsGranted(true);
       return;
     }
