@@ -102,10 +102,8 @@ const useFeedbackAudioRecorder = () => {
   // set Permission Observer and request microphone permission
   useEffect(() => {
     if (agentController.isOnWebview()) {
-      console.log('진입했니 시발아?')
       const describe = micPermissionController.subscribe(function () {
         //micPermissionController.receiveMessage 호출 시 마다 옵저버 함수가 실행돼, 리액트 라이프사이클과 연동
-
         setIsGranted(this.getServiceImpl().getIsGranted());
       });
       micPermissionController.requestMessage('requestMicrophonePermission');
@@ -115,7 +113,6 @@ const useFeedbackAudioRecorder = () => {
       };
     }
     else{
-      console.log('웹뷰 아님')
       setIsGranted(true)
     }
   }, []);
@@ -196,8 +193,6 @@ const useHeaderController = () => {
   const { router } = useNavigation();
   const currentQueryString = router.query.record as RecordProcessState;
   const { setHeaderContent } = useHeader();
-
-  console.log('header', currentQueryString);
 
   useEffect(() => {
     if (currentQueryString === 'progress') {
