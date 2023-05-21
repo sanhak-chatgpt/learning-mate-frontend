@@ -16,50 +16,42 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface UserDtoMe
+ * @interface UserDtoNickName
  */
-export interface UserDtoMe {
+export interface UserDtoNickName {
     /**
      * 
      * @type {string}
-     * @memberof UserDtoMe
+     * @memberof UserDtoNickName
      */
     name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserDtoMe
-     */
-    authToken: string;
 }
 
 /**
- * Check if a given object implements the UserDtoMe interface.
+ * Check if a given object implements the UserDtoNickName interface.
  */
-export function instanceOfUserDtoMe(value: object): boolean {
+export function instanceOfUserDtoNickName(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "name" in value;
-    isInstance = isInstance && "authToken" in value;
 
     return isInstance;
 }
 
-export function UserDtoMeFromJSON(json: any): UserDtoMe {
-    return UserDtoMeFromJSONTyped(json, false);
+export function UserDtoNickNameFromJSON(json: any): UserDtoNickName {
+    return UserDtoNickNameFromJSONTyped(json, false);
 }
 
-export function UserDtoMeFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserDtoMe {
+export function UserDtoNickNameFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserDtoNickName {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'name': json['name'],
-        'authToken': json['authToken'],
     };
 }
 
-export function UserDtoMeToJSON(value?: UserDtoMe | null): any {
+export function UserDtoNickNameToJSON(value?: UserDtoNickName | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -69,7 +61,6 @@ export function UserDtoMeToJSON(value?: UserDtoMe | null): any {
     return {
         
         'name': value.name,
-        'authToken': value.authToken,
     };
 }
 
