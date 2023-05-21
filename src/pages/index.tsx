@@ -9,14 +9,16 @@ import {
 } from '@/components/App/AppHeader/HeaderContent/HeaderContentImpls/MainHeader';
 import { useRecoilState } from 'recoil';
 import { headerContentState } from '@/states/state.header';
+import { userState } from '@/states/state.user'
 import { MemoizedDivider, MemoizedPlaceHolder, Root, Wrapper } from '@/components/Domain/Home';
 import { JWT_TOKEN_KEY, localStorageManager, USER_NAME_KEY } from '@/util/models/Storage';
 import { UserControllerApi } from '@/util/Api';
 
-export default function Home() {
+export const Home = () => {
   const { openModal } = useModalContext();
   const { navigateTo } = useNavigation();
   const [headerContent, setHeaderContent] = useRecoilState(headerContentState);
+  const [user,setUser] =useRecoilState(userState);
 
   useEffect(() => {
     if (!localStorageManager.getItem(JWT_TOKEN_KEY)) {
@@ -24,6 +26,9 @@ export default function Home() {
       const token = api.issueToken().then((res) => {
         localStorageManager.setItem(JWT_TOKEN_KEY, res.authToken);
         localStorageManager.setItem(USER_NAME_KEY, res.name);
+        setUser({
+          name:res.name
+        })
       });
     }
   }, []);
@@ -92,3 +97,6 @@ export default function Home() {
     </>
   );
 }
+
+
+export default Home;
