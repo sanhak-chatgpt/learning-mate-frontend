@@ -34,16 +34,11 @@ const FeedbackResultHelpfulnessModal = ({ title, visible, close }: FeedbackHelpM
           <header>{title}</header>
           <IconContainer as={'main'} flex={'rowCenter'} >
             <CircleIconGroup values={iconName} onChange={setIconName} >
-              {/* {CIRCLE_ICON_PRESET?.map((icon) => {
+              {CIRCLE_ICON_PRESET?.map((icon) => {
                 return (
                   <CircleIconChip name={icon.name} width={icon.width} height={icon.height} viewBox={icon.viewBox} />
                 );
-              })} */}
-              <CircleIconChip name={'faceWorst'} width={20} height={20} viewBox={'0 0 20 20'}  />
-              <CircleIconChip name={'faceBad'} width={24} height={24} viewBox={'0 0 24 24'}  />
-              <CircleIconChip name={'faceNormal'} width={24} height={24} viewBox={'0 0 24 24'}  />
-              <CircleIconChip name={'faceGood'} width={24} height={24} viewBox={'0 0 24 24'}  />
-              <CircleIconChip name={'faceBest'} width={20} height={20} viewBox={'0 0 20 20'}  />
+              })}
             </CircleIconGroup>
           </IconContainer>
           <footer>
