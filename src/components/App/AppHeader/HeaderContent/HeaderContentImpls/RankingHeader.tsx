@@ -5,9 +5,7 @@ import { userState } from '@/states/state.user';
 export const RankingHeader = () => {
   return (
     <>
-      <h1>
-        랭킹페이지
-      </h1>
+      <h1>랭킹</h1>
     </>
   );
 };
