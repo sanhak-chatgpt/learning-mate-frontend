@@ -10,6 +10,7 @@ export type NavItemPath = `/${string}`;
 export type NavItem<TName = IconRegistryKey, TPath = NavItemPath> = { name: TName; path: TPath };
 export const NAV_ITEM_PRESET: Array<NavItem> = [
   { name: 'NavHomeIcon', path: '/' },
+  { name: 'RankingTrophy', path: '/ranking' },
   { name: 'NavSettingIcon', path: '/setting' },
 ];
 
