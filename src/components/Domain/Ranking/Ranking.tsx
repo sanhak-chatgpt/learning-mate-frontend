@@ -26,3 +26,4 @@ export const Ranking = () => {
         </S.Root>
     )
 };
+

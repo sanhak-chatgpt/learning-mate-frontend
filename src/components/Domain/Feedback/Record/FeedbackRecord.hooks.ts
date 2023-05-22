@@ -111,9 +111,8 @@ const useFeedbackAudioRecorder = () => {
       return () => {
         describe();
       };
-    }
-    else{
-      setIsGranted(true)
+    } else {
+      setIsGranted(true);
     }
   }, []);
 
@@ -121,7 +120,7 @@ const useFeedbackAudioRecorder = () => {
     console.log(isGranted);
     if (isGranted) {
       await startRecording();
-    }else{
+    } else {
       micPermissionController.requestMessage('requestMicrophonePermission');
     }
   };
