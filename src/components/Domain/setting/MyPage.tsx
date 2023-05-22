@@ -5,7 +5,7 @@ import { useNavigation } from '@/util/hooks/useNavigation';
 import React from 'react';
 import { MemoizedDivider } from '../Home';
 import { useSettingHeader } from './MyPage.hooks';
-import * as S from './MyPage.styles';
+import Link from 'next/link';
 
 const MyPageController = () => {
   useSettingHeader();
@@ -19,7 +19,9 @@ const MyPageController = () => {
       </KeywordBox>
       <MemoizedDivider />
       <KeywordBox title={'규정'}>
-        <ListItem title={'이용약관'} itemSize={{ height: '4.6rem' }} />
+        <Link href="https://youngminz.netlify.app/pages/study-mate-privacy-policy">
+          <ListItem title={'이용약관'} itemSize={{ height: '4.6rem' }} />
+        </Link>
       </KeywordBox>
       <MemoizedDivider />
       <KeywordBox title={'프로필'}>
@@ -31,7 +33,6 @@ const MyPageController = () => {
           }}
         />
       </KeywordBox>
-      {/*<MemoizedDivider />*/}
     </Flex>
   );
 };
