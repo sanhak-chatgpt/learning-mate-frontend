@@ -3,7 +3,7 @@ import { useModalContext } from "@/components/UI/Modal/Modal.hooks";
 import { userState } from "@/states/state.user";
 import { UserControllerApi } from "@/util/Api";
 import { BaseError } from "@/util/models/Error";
-import { useEffect, useRef } from "react";
+import { FormEventHandler, useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
 
 
@@ -24,7 +24,7 @@ export const useEditProfile = () => {
     })
   }, []);
 
-  const handleNameSubmit = async (e: Event) => {
+  const handleNameSubmit:FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
     try{

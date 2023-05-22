@@ -10,12 +10,14 @@ const KeywordBox = ({title, children}:KeyworBoxProps) => {
 
   return (
     <S.Container flex={'columnCenter'}>
+      <S.TitleWrapper flex={'rowStart'}>
         <span>
           {title ?? ""}
         </span>
-        <S.Container flex={'columnStart'} as={'ul'}>
+      </S.TitleWrapper>
+        <S.ContentWrapper flex={'columnStart'} as={'ul'}>
           {children}
-        </S.Container>
+        </S.ContentWrapper>
     </S.Container>
   );
 };
