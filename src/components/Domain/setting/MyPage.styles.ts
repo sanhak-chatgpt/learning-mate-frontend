@@ -43,3 +43,7 @@ export const Input = styled.input`
     //transition-duration: 300ms;
   }
 `;
+
+export const RowContainer = styled(Flex)`
+  width: 100%;
+`;

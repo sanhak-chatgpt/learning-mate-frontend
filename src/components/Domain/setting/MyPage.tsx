@@ -2,10 +2,37 @@ import { Flex } from '@/components/UI/FlexBox';
 import KeywordBox from '@/components/UI/KeywordBox/KeywordBox';
 import ListItem from '@/components/UI/ListItem/ListItem';
 import { useNavigation } from '@/util/hooks/useNavigation';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MemoizedDivider } from '../Home';
 import { useSettingHeader } from './MyPage.hooks';
 import Link from 'next/link';
+import { Toggle } from '@/components/UI/Toggle/Toggle';
+import * as S from './MyPage.styles';
+import { useRecoilState } from 'recoil';
+import { themeKeyState, themeState } from '@/states/state.theme';
+
+export const DarkmodeToggle = () => {
+  const [theme, setTheme] = useRecoilState(themeKeyState);
+  const [isToggled, setIsToggled] = useState<boolean>(false);
+  const handleToggleDarkmode = () => {
+    if (theme.theme === 'default') {
+      setTheme({ theme: 'dark' });
+    } else {
+      setTheme({ theme: 'default' });
+    }
+    setIsToggled(!isToggled);
+  };
+
+  useEffect(() => {
+    if (theme.theme === 'default') {
+      setIsToggled(false);
+    } else {
+      setIsToggled(true);
+    }
+  }, []);
+
+  return <Toggle isToggled={isToggled} toggleCallback={handleToggleDarkmode} />;
+};
 
 const MyPageController = () => {
   useSettingHeader();
@@ -14,7 +41,10 @@ const MyPageController = () => {
     <Flex flex={'columnStart'}>
       <MemoizedDivider />
       <KeywordBox title={'UI'}>
-        <ListItem title={'다크모드'} itemSize={{ height: '4.6rem' }} />
+        <S.RowContainer flex={'rowCenter'} custom={{ justify: 'space-between' }}>
+          <ListItem title={'다크모드'} itemSize={{ height: '4.6rem' }} />
+          <DarkmodeToggle />
+        </S.RowContainer>
         <ListItem title={'언어 변경'} itemSize={{ height: '4.6rem' }} />
       </KeywordBox>
       <MemoizedDivider />
