@@ -28,6 +28,7 @@ import {
 export class RankingControllerApi extends runtime.BaseAPI {
 
     /**
+     * ranking을 받아오는 api
      */
     async getRankingRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LectureRankingDtoResponse>> {
         const queryParameters: any = {};
