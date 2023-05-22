@@ -20,36 +20,27 @@ import { LectureRankingDtoResponseFromJSON, LectureRankingDtoResponseToJSON } fr
  *
  */
 export class RankingControllerApi extends runtime.BaseAPI {
-  /**
-   */
-  async getRankingRaw(
-    initOverrides?: RequestInit | runtime.InitOverrideFunction
-  ): Promise<runtime.ApiResponse<LectureRankingDtoResponse>> {
-    const queryParameters: any = {};
+    /**
+     * ranking을 받아오는 api
+     */
+    async getRankingRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LectureRankingDtoResponse>> {
+        const queryParameters: any = {};
 
-    const headerParameters: runtime.HTTPHeaders = {};
+        const headerParameters: runtime.HTTPHeaders = {};
 
-    const response = await this.request(
-      {
-        path: `/api/v1/ranking`,
-        method: 'GET',
-        headers: headerParameters,
-        query: queryParameters,
-      },
-      initOverrides
-    );
+        const response = await this.request({
+            path: `/api/v1/ranking`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
 
-    return new runtime.JSONApiResponse(response, (jsonValue) =>
-      LectureRankingDtoResponseFromJSON(jsonValue)
-    );
-  }
-
-  /**
-   */
-  async getRanking(
-    initOverrides?: RequestInit | runtime.InitOverrideFunction
-  ): Promise<LectureRankingDtoResponse> {
-    const response = await this.getRankingRaw(initOverrides);
-    return await response.value();
-  }
+        return new runtime.JSONApiResponse(response, (jsonValue) => LectureRankingDtoResponseFromJSON(jsonValue));
+    }
+    /**
+     */
+    async getRanking(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LectureRankingDtoResponse> {
+        const response = await this.getRankingRaw(initOverrides);
+        return await response.value();
+    }
 }
