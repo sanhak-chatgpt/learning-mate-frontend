@@ -1,22 +1,22 @@
-import { useHeader } from "@/components/App/AppHeader/HeaderContent";
-import KeywordBox from "@/components/UI/KeywordBox/KeywordBox";
-import { useNavigation } from "@/util/hooks/useNavigation";
-import { useMutation } from "@tanstack/react-query";
-import React, { useEffect, useRef } from "react";
-import * as S from '../MyPage.styles'
-import { useEditProfile } from "./EditProfile.hooks";
+import KeywordBox from '@/components/UI/KeywordBox/KeywordBox';
+import React, { useEffect, useRef } from 'react';
+import { MemoizedDivider } from '../../Home';
+import { useEditProfile } from './EditProfile.hooks';
+import * as S from '../MyPage.styles';
 
 const EditProfile = () => {
-const {nameInputRef, handleNameSubmit} =useEditProfile()
-
+  const { nameInputRef, handleNameSubmit } = useEditProfile();
 
   return (
-    <KeywordBox title={'닉네임 변경'}>
-      <form action="submit">
-        <input type="text" ref={nameInputRef}  />
-        {/*<button onClick={handleNameSubmit}>변경하기</button>*/}
-      </form>
-    </KeywordBox>
+    <>
+      <MemoizedDivider />
+      <KeywordBox title={'닉네임 변경'}>
+        <S.FormWrapper flex={'rowCenter'} as={'form'} action="submit" onSubmit={handleNameSubmit}>
+          <S.Input type="text" ref={nameInputRef} />
+          <button type={'submit'}>변경</button>
+        </S.FormWrapper>
+      </KeywordBox>
+    </>
   );
 };
 
