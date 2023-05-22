@@ -9,17 +9,19 @@ export const Ranking = () => {
 
     const RankingResultRended = () => {
         return message.status === 'loading' ? (
-            <div>loading ranking</div>
+            <h4>loading ranking</h4>
         ) : message.status === 'error' ? (
-            <div>getting ranking has an error</div>
+            <h4>getting ranking has an error</h4>
         ) : (
-            <div>{message.data?.message}</div>
+            <h4>{message.data?.message}</h4>
         )
     }
       
     return(
-        <S.Root>
-            <SVGIcon name={'RankingPageIcon'} width={250} height={250} viewBox={'0 0 210 210'}></SVGIcon>
+        <S.Root flex={"columnCenter"}>
+            <S.IconWrapper>
+                <SVGIcon name={'RankingPageIcon'} width={250} height={250} viewBox={'0 0 210 210'}></SVGIcon>
+            </S.IconWrapper>
             <RankingResultRended />
         </S.Root>
     )
