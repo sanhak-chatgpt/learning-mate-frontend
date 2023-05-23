@@ -92,7 +92,7 @@ export const useMutateUsernameQuery = () => {
   const queryClient = useQueryClient();
 
   const { mutateAsync, data, status } = useMutation({
-    mutationKey: [NAME_MUTATE_QUERY_KEY, USER_INFO_QUERY_KEY],
+    mutationKey: [NAME_MUTATE_QUERY_KEY],
     mutationFn: async (name?: string) => {
       if (!!name) {
         return await changeUsername(name);
@@ -100,9 +100,9 @@ export const useMutateUsernameQuery = () => {
         throw new BaseError('유효하지 않은 이름입니다.');
       }
     },
-    onSuccess: async (data: { name: string }) => {
+    onSuccess: async (data) => {
       localStorageManager.removeItem(USER_NAME_KEY);
-      localStorageManager.setItem(USER_NAME_KEY, data.name);
+      // localStorageManager.setItem(USER_NAME_KEY, data.name);
       // 유저 정보 재조회 해야함
     },
   });

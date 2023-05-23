@@ -8,4 +8,5 @@ export const Container = styled.main`
 
   box-sizing: border-box;
   padding-bottom: 9rem;
+  background: ${({ theme }) => theme.color.background.default};
 `;

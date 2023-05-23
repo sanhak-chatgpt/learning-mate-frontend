@@ -7,7 +7,7 @@ export const Root = styled.div`
 `;
 
 export const Wrapper = styled(Flex)`
-  height: 100%;
+  background: ${({ theme }) => theme.color.background.default};
 `;
 
 export const ConfigListRoot = styled.div`
@@ -70,7 +70,7 @@ export const WaitContainer = styled(Flex)`
 
 export const ResultContainer = styled(Flex)`
   width: 100%;
-  max-height: 100%
+  max-height: 100%;
   position: absolute;
 `;
 
