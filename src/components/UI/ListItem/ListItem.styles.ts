@@ -3,16 +3,18 @@ import { Flex } from '@/components/UI/FlexBox';
 
 export const ListItemRoot = styled.li<{ itemSize?: { width?: string; height?: string } }>`
   width: 100%;
-  height: 8.6rem;
+  min-height: 8.6rem;
   padding: 0 2.2rem 0 2.2rem;
   box-sizing: border-box;
   list-style: none;
   ${({ itemSize }) => {
     const totalWidth = itemSize?.width ? itemSize?.width : '100%';
     const totalHeight = itemSize?.height ? itemSize?.height : '8.6rem';
+    const minHeight = itemSize?.height ? '0px' : '8.6rem';
     return `
       width: ${totalWidth};
       height: ${totalHeight};
+      min-height:${minHeight};
     `;
   }}
 `;

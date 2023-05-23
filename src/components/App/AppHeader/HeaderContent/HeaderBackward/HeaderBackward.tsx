@@ -19,8 +19,9 @@ export const HeaderBackward = ({ visible, historyStack }: HeaderBackwardProps) =
         path: topElement?.prev.path,
         query: topElement.prev.query,
       });
+    } else {
+      await router.back();
     }
-    await router.back();
   };
 
   return (

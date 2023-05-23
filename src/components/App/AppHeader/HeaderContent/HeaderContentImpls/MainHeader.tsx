@@ -1,17 +1,25 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
-import { userState } from '@/states/state.user';
+import { useGetUserInfoQuery } from '@/components/Domain/Home/Home.hooks';
 
 export const MainHeader = () => {
-  const user = useRecoilValue(userState);
+  const { data, status } = useGetUserInfoQuery();
 
   return (
     <>
-      <h1>
-        {user.name} 님, 러닝메이트에
-        <br />
-        오신 것을 환영해요.
-      </h1>
+      {(status === 'error' || status === 'loading') && (
+        <h1>
+          러닝메이트에
+          <br />
+          오신 것을 환영해요.
+        </h1>
+      )}
+      {status === 'success' && (
+        <h1>
+          {data?.name} 님, 러닝메이트에
+          <br />
+          오신 것을 환영해요.
+        </h1>
+      )}
     </>
   );
 };
