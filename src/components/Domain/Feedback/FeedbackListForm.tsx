@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Config,
   FeedbackConfigKey,
@@ -11,6 +11,8 @@ import {
 import { getRandomHex } from '@/util/models/Number';
 import * as S from './Feedback.styles';
 import ListItem from '@/components/UI/ListItem/ListItem';
+import { useInView } from 'react-intersection-observer';
+import { InjectedRefIntersectionObserver } from '@/components/Global/IntersectionObserver/IntersectionObserver';
 
 export type FeedbackConfigurationListProps = {
   handlePickItem: (key: FeedbackConfigKey, config: Config) => void;
@@ -18,11 +20,7 @@ export type FeedbackConfigurationListProps = {
   currentProcess: ProcessState;
 };
 
-export const MajorList = ({
-  handlePickItem,
-  feedbackConfig,
-  currentProcess,
-}: FeedbackConfigurationListProps) => {
+export const MajorList = ({ handlePickItem, currentProcess }: FeedbackConfigurationListProps) => {
   const query = useInfiniteMajorList(currentProcess);
 
   return (
@@ -40,6 +38,12 @@ export const MajorList = ({
             );
           });
         })}
+      <InjectedRefIntersectionObserver
+        triggerVariables={[query.hasNextPage, !query.isFetchingNextPage]}
+        inViewCallback={() => {
+          query.fetchNextPage();
+        }}
+      />
     </>
   );
 };
@@ -66,6 +70,12 @@ export const SubjectList = ({
             );
           });
         })}
+      <InjectedRefIntersectionObserver
+        triggerVariables={[query.hasNextPage, !query.isFetchingNextPage]}
+        inViewCallback={() => {
+          query.fetchNextPage();
+        }}
+      />
     </>
   );
 };
@@ -92,6 +102,12 @@ export const TopicList = ({
             );
           });
         })}
+      <InjectedRefIntersectionObserver
+        triggerVariables={[query.hasNextPage, !query.isFetchingNextPage]}
+        inViewCallback={() => {
+          query.fetchNextPage();
+        }}
+      />
     </>
   );
 };
