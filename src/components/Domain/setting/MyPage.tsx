@@ -45,7 +45,7 @@ const MyPageController = () => {
           <ListItem title={'다크모드'} itemSize={{ height: '4.6rem' }} />
           <DarkmodeToggle />
         </S.RowContainer>
-        <ListItem title={'언어 변경'} itemSize={{ height: '4.6rem' }} />
+        {/* <ListItem title={'언어 변경'} itemSize={{ height: '4.6rem' }} /> */}
       </KeywordBox>
       <MemoizedDivider />
       <KeywordBox title={'규정'}>
@@ -53,7 +53,7 @@ const MyPageController = () => {
           <ListItem title={'개인 정보 처리 방침'} itemSize={{ height: '4.6rem' }} />
         </Link>
       </KeywordBox>
-      <MemoizedDivider />
+      {/* <MemoizedDivider />
       <KeywordBox title={'프로필'}>
         <ListItem
           title={'프로필 수정'}
@@ -62,7 +62,7 @@ const MyPageController = () => {
             navigateTo({ path: '/setting/edit-profile' });
           }}
         />
-      </KeywordBox>
+      </KeywordBox> */}
     </Flex>
   );
 };

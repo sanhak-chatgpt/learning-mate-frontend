@@ -74,13 +74,13 @@ export const Home = () => {
             icon={{ name: 'MessageIcon', width: '5rem', height: '5rem' }}
             onClick={handleForwardFeedbackPage}
           />
-          <MemoizedDivider></MemoizedDivider>
+          {/* <MemoizedDivider></MemoizedDivider>
           <ListItem
             title={'다른 고수의 강의 보러가기'}
             description={'고수가 알기 쉽게 설명한 강의를 들어볼까요?'}
             icon={{ name: 'ExplorerIcon', width: '5rem', height: '5rem' }}
             onClick={handleOpenModal}
-          />
+          /> */}
         </Wrapper>
       </Root>
     </>
