@@ -1,1 +1,1 @@
-export { default as RankingTrophy } from './RankingTrophy';
+export { default as MicrophoneIcon } from './MicrophoneIcon';
