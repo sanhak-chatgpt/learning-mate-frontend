@@ -1,30 +1,52 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { JWT_TOKEN_KEY, localStorageManager, USER_NAME_KEY } from '@/util/models/Storage';
-import { UserControllerApi, UserDtoMe } from '@/util/Api';
+import { UserControllerApi } from '@/util/Api';
 
-export const getUserInfo = async () => {
-  if (!localStorageManager.getItem(JWT_TOKEN_KEY)) {
-    console.log('실핻애');
-    const api = new UserControllerApi();
-    const res = await api.issueToken();
+export const fetchUserName = async () => {
+  const api = new UserControllerApi();
 
-    localStorageManager.setItem(JWT_TOKEN_KEY, res.authToken);
-    localStorageManager.setItem(USER_NAME_KEY, res.name);
-    return res;
-  }
+  return await api.getuserName();
+};
+
+export const registerNewUser = async () => {
+  const api = new UserControllerApi();
+  return await api.issueToken();
+};
+
+export const setUserNameToStorage = (name: string) => {
+  localStorageManager.setItem(USER_NAME_KEY, name);
+};
+
+export const setTokenToStorage = (token: string) => {
+  localStorageManager.setItem(JWT_TOKEN_KEY, token);
+};
+
+export const getUserInfoFromStorage = () => {
   return {
     authToken: localStorageManager.getItem(JWT_TOKEN_KEY),
     name: localStorageManager.getItem(USER_NAME_KEY),
-  } as UserDtoMe;
+  };
 };
 
-export const USER_INFO_QUERY_KEY = 'user';
+export const USER_NAME_QUERY_KEY = 'user';
 
-export const useGetUserInfoQuery = () => {
+export const useGetUserNameQuery = () => {
   const { data, status } = useQuery({
-    queryKey: [USER_INFO_QUERY_KEY],
-    queryFn: async () => await getUserInfo(),
+    queryKey: [USER_NAME_QUERY_KEY],
+    queryFn: async () => await fetchUserName(),
   });
 
   return { data, status };
+};
+
+export const CREATE_NEW_USER_QUERY_KEY = 'create_user';
+
+export const useCreateNewUserQuery = () => {
+  return useMutation({
+    mutationKey: [CREATE_NEW_USER_QUERY_KEY],
+    mutationFn: async () => {
+      return await registerNewUser();
+    },
+    onSuccess: () => {},
+  });
 };

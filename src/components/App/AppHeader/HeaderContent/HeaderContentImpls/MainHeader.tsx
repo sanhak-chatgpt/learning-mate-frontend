@@ -1,8 +1,8 @@
 import React from 'react';
-import { useGetUserInfoQuery } from '@/components/Domain/Home/Home.hooks';
+import { useGetUserNameQuery } from '@/components/Domain/Home/Home.hooks';
 
 export const MainHeader = () => {
-  const { data, status } = useGetUserInfoQuery();
+  const { data, status } = useGetUserNameQuery();
 
   return (
     <>

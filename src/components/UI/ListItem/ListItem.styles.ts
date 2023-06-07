@@ -7,6 +7,7 @@ export const ListItemRoot = styled.li<{ itemSize?: { width?: string; height?: st
   padding: 0 2.2rem 0 2.2rem;
   box-sizing: border-box;
   list-style: none;
+  cursor: pointer;
   ${({ itemSize }) => {
     const totalWidth = itemSize?.width ? itemSize?.width : '100%';
     const totalHeight = itemSize?.height ? itemSize?.height : '8.6rem';
@@ -23,7 +24,7 @@ export const ListItemWrapper = styled(Flex)`
   height: 100%;
   width: 100%;
   background: ${({ theme }) => theme.color.background.default};
-
+  cursor: pointer;
   h3 {
     font-weight: 600;
     width: 100%;
