@@ -28,7 +28,7 @@
     "@emotion/jsx-import": "off",
     "react/prop-types": "off",
     "prefer-const": "error",
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": 0,
     "no-useless-escape": "error",
     "curly": ["error", "multi-line"],
     "react/jsx-no-undef": "error",
