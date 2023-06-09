@@ -72,6 +72,40 @@ export class UserControllerApi extends runtime.BaseAPI {
     }
 
     /**
+     * User 정보 조회 api
+     */
+    async getuserNameRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserDtoNickName>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("bearer-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/api/v1/users/name`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserDtoNickNameFromJSON(jsonValue));
+    }
+
+    /**
+     * User 정보 조회 api
+     */
+    async getuserName(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserDtoNickName> {
+        const response = await this.getuserNameRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      */
     async issueTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserDtoMe>> {
         const queryParameters: any = {};
@@ -98,7 +132,7 @@ export class UserControllerApi extends runtime.BaseAPI {
     /**
      * nickName 변경 api
      */
-    async updateUserNicknameRaw(requestParameters: UpdateUserNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+    async updateUserNicknameRaw(requestParameters: UpdateUserNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserDtoNickName>> {
         if (requestParameters.userDtoNickName === null || requestParameters.userDtoNickName === undefined) {
             throw new runtime.RequiredError('userDtoNickName','Required parameter requestParameters.userDtoNickName was null or undefined when calling updateUserNickname.');
         }
@@ -125,17 +159,13 @@ export class UserControllerApi extends runtime.BaseAPI {
             body: UserDtoNickNameToJSON(requestParameters.userDtoNickName),
         }, initOverrides);
 
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<string>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserDtoNickNameFromJSON(jsonValue));
     }
 
     /**
      * nickName 변경 api
      */
-    async updateUserNickname(requestParameters: UpdateUserNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+    async updateUserNickname(requestParameters: UpdateUserNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserDtoNickName> {
         const response = await this.updateUserNicknameRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -9,30 +9,32 @@ import {
 } from '@/components/App/AppHeader/HeaderContent/HeaderContentImpls/MainHeader';
 import { useRecoilState } from 'recoil';
 import { headerContentState } from '@/states/state.header';
-import { userState } from '@/states/state.user';
 import { MemoizedDivider, MemoizedPlaceHolder, Root, Wrapper } from '@/components/Domain/Home';
-import { JWT_TOKEN_KEY, localStorageManager, USER_NAME_KEY } from '@/util/models/Storage';
-import { UserControllerApi } from '@/util/Api';
+import {
+  getUserInfoFromStorage,
+  setTokenToStorage,
+  setUserNameToStorage,
+  useCreateNewUserQuery,
+} from '@/components/Domain/Home/Home.hooks';
 
 export const Home = () => {
-  const { openModal } = useModalContext();
   const { navigateTo } = useNavigation();
+  const { mutate: createNewUser, status, data } = useCreateNewUserQuery();
   const [headerContent, setHeaderContent] = useRecoilState(headerContentState);
-  const [user, setUser] = useRecoilState(userState);
 
-  useEffect(() => {}, []);
-
-  const handleOpenModal = React.useCallback(() => {
-    openModal({
-      type: 'PreparingService',
-      props: {},
-      events: {
-        onClose: () => {
-          navigateTo({ path: '/' });
-        },
-      },
-    });
+  useEffect(() => {
+    const user = getUserInfoFromStorage();
+    if (!user.name && !user.authToken) {
+      createNewUser();
+    }
   }, []);
+
+  useEffect(() => {
+    if (!!data && status === 'success') {
+      setTokenToStorage(data.authToken);
+      setUserNameToStorage(data.name);
+    }
+  }, [data, status]);
 
   const handleForwardFeedbackPage = React.useCallback(() => {
     navigateTo({
@@ -74,13 +76,13 @@ export const Home = () => {
             icon={{ name: 'MessageIcon', width: '5rem', height: '5rem' }}
             onClick={handleForwardFeedbackPage}
           />
-          <MemoizedDivider></MemoizedDivider>
+          {/* <MemoizedDivider></MemoizedDivider>
           <ListItem
             title={'다른 고수의 강의 보러가기'}
             description={'고수가 알기 쉽게 설명한 강의를 들어볼까요?'}
             icon={{ name: 'ExplorerIcon', width: '5rem', height: '5rem' }}
             onClick={handleOpenModal}
-          />
+          /> */}
         </Wrapper>
       </Root>
     </>

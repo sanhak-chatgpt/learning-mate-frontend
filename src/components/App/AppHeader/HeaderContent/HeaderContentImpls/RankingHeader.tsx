@@ -16,7 +16,7 @@ export const RankingDescription = () => {
   return (
     <>
       <h2>
-        {user.name}님 러닝메이트에서 학습하신 기록으로
+        {user.name}님 스터디 메이트에서 학습하신 기록으로
         <br />
         {user.name}님의 학습점수를 확인하실 수 있어요!
       </h2>

@@ -15,7 +15,7 @@ export const FormWrapper = styled(Flex)`
     font-size: ${({ theme }) => theme.size.font.lg};
     border: none;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 5px 2px;
-
+    cursor: pointer;
     &:hover {
       background: ${({ theme }) => theme.color.nav.active};
       color: ${({ theme }) => theme.color.background.default};

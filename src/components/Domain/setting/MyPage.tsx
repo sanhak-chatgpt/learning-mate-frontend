@@ -45,12 +45,12 @@ const MyPageController = () => {
           <ListItem title={'다크모드'} itemSize={{ height: '4.6rem' }} />
           <DarkmodeToggle />
         </S.RowContainer>
-        <ListItem title={'언어 변경'} itemSize={{ height: '4.6rem' }} />
+        {/* <ListItem title={'언어 변경'} itemSize={{ height: '4.6rem' }} /> */}
       </KeywordBox>
       <MemoizedDivider />
       <KeywordBox title={'규정'}>
         <Link href="https://youngminz.netlify.app/pages/study-mate-privacy-policy">
-          <ListItem title={'이용약관'} itemSize={{ height: '4.6rem' }} />
+          <ListItem title={'개인 정보 처리 방침'} itemSize={{ height: '4.6rem' }} />
         </Link>
       </KeywordBox>
       <MemoizedDivider />

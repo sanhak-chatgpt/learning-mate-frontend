@@ -4,7 +4,7 @@ import { UserControllerApi } from '@/util/Api';
 import { BaseError } from '@/util/models/Error';
 import { FormEventHandler, useEffect, useRef } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { USER_INFO_QUERY_KEY } from '@/components/Domain/Home/Home.hooks';
+import { USER_NAME_QUERY_KEY } from '@/components/Domain/Home/Home.hooks';
 import { localStorageManager, USER_NAME_KEY } from '@/util/models/Storage';
 
 export const useEditProfile = () => {
@@ -95,28 +95,27 @@ export const useMutateUsernameQuery = () => {
     mutationKey: [NAME_MUTATE_QUERY_KEY],
     mutationFn: async (name?: string) => {
       if (!!name) {
-        return await changeUsername(name);
+        return await mutateUserName(name);
       } else {
         throw new BaseError('유효하지 않은 이름입니다.');
       }
     },
     onSuccess: async (data) => {
       localStorageManager.removeItem(USER_NAME_KEY);
-      // localStorageManager.setItem(USER_NAME_KEY, data.name);
-      // 유저 정보 재조회 해야함
+      localStorageManager.setItem(USER_NAME_KEY, data.name);
+      await queryClient.invalidateQueries([USER_NAME_QUERY_KEY]);
     },
   });
 
   return { mutateAsync, data, status };
 };
 
-export const changeUsername = async (name: string) => {
+export const mutateUserName = async (name: string) => {
   const api = new UserControllerApi();
   if (!!name) {
-    const res = await api.updateUserNickname({
+    return await api.updateUserNickname({
       userDtoNickName: { name },
     });
-    return res;
   } else {
     throw new BaseError('유효하지 않거나 중복된 닉네임 입니다.');
   }

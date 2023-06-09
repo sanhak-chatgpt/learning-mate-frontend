@@ -52,8 +52,8 @@ const FeedbackRecordForm = ({ config }: ConfigurationListProps) => {
                   <SVGIcon
                     className={'Mic'}
                     name={'MicrophoneIcon'}
-                    width={134}
-                    height={192}
+                    width={'134px'}
+                    height={'192px'}
                     viewBox={'0 0 134 192'}
                   />
                   <SVGIcon
