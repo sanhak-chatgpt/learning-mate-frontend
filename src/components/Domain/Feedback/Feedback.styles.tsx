@@ -99,9 +99,9 @@ export const RecordButtonWrapper = styled(Flex)`
   gap: 1.2rem;
   box-sizing: border-box;
   width: 100%;
-  //position: fixed;
-  //bottom: 0;
-  //margin-bottom: 4rem;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 4rem;
 `;
 
 export const RecordCompleteButton = styled(Flex)`
